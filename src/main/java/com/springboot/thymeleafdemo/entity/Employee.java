@@ -1,5 +1,7 @@
 package com.springboot.thymeleafdemo.entity;
 
+import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,15 +20,27 @@ public class Employee {
 	@Column(name="id")
 	private int id;
 	
+	@Column(name="login")
+	private String login;
+	
+	@Column(name="password")
+	private String password;
+	
 	@Column(name="first_name")
 	private String firstName;
 	
 	@Column(name="last_name")
 	private String lastName;
 	
-	@Column(name="email")
-	private String email;
+	@Column(name="tel")
+	private int tel;
 	
+	//I chooosen sql date format
+	@Column(name="date_of_employment")
+	private Date dateOfEmployment;
+	
+	@Column(name="date_of_expire")
+	private Date dateOfExpire;
 	
 	// define constructors
 	
@@ -34,22 +48,34 @@ public class Employee {
 		
 	}
 
-	public Employee(int id, String firstName, String lastName, String email) {
+	public Employee(int id, String login, String password, String firstName, String lastName, int tel,
+			Date dateOfEmployment, Date dateOfExpire) {
+		
 		this.id = id;
+		this.login = login;
+		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.email = email;
+		this.tel = tel;
+		this.dateOfEmployment = dateOfEmployment;
+		this.dateOfExpire = dateOfExpire;
 	}
 
 
 
-	public Employee(String firstName, String lastName, String email) {
+	public Employee( String login, String password, String firstName, String lastName, int tel,
+			Date dateOfEmployment, Date dateOfExpire) {
+
+		this.login = login;
+		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
-		this.email = email;
+		this.tel = tel;
+		this.dateOfEmployment = dateOfEmployment;
+		this.dateOfExpire = dateOfExpire;
 	}
 
-	
+
 	// define getter / setter
 	
 	public int getId() {
@@ -58,6 +84,22 @@ public class Employee {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getLogin() {
+		return login;
+	}
+
+	public void setLogin(String login) {
+		this.login = login;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getFirstName() {
@@ -76,22 +118,43 @@ public class Employee {
 		this.lastName = lastName;
 	}
 
-	public String getEmail() {
-		return email;
+	public int getTel() {
+		return tel;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setTel(int tel) {
+		this.tel = tel;
 	}
 
+	public Date getDateOfEmployment() {
+		return dateOfEmployment;
+	}
+
+	public void setDateOfEmployment(Date dateOfEmployment) {
+		this.dateOfEmployment = dateOfEmployment;
+	}
+
+	public Date getDateOfExpire() {
+		return dateOfExpire;
+	}
+
+	public void setDateOfExpire(Date dateOfExpire) {
+		this.dateOfExpire = dateOfExpire;
+	}
 	
-	// define toString
 	
+	
+	// define toString method
+
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+		return "Employee [id=" + id + ", login=" + login + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", tel=" + tel + ", dateOfEmployment=" + dateOfEmployment
+				+ ", dateOfExpire=" + dateOfExpire + "]";
 	}
 
+
+	
 	
 	
 	
