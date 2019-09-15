@@ -11,6 +11,6 @@ public interface LeaveDaysRepository extends JpaRepository<LeaveDays, Integer>  
 	// that's it ... no need to write any code LOL!
 	
 		// add a method to sort by last name (www.luv2code.com/query-methids
-		public List<LeaveDays> findAllByOrderByLastNameAsc();
+		public List<LeaveDays> findAll();
 
 }

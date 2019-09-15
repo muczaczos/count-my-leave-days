@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.springboot.thymeleafdemo.dao.LeaveDaysRepository;
 import com.springboot.thymeleafdemo.entity.Employee;
 import com.springboot.thymeleafdemo.entity.LeaveDays;
 
+@Service
 public class LeaveDaysServiceImpl implements LeaveDaysService {
 
 	private LeaveDaysRepository leaveDaysRepository;
@@ -21,7 +23,7 @@ public class LeaveDaysServiceImpl implements LeaveDaysService {
 	@Override
 	public List<LeaveDays> findAll() {
 		
-		return leaveDaysRepository.findAllByOrderByLastNameAsc();
+		return leaveDaysRepository.findAll();
 	}
 
 	@Override
