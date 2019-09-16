@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<title>Save Leave Day Form</title>
+
+</head>
+
+<body>
+
+	<div class="container">
+	
+		<h3>Days of Leave</h3>
+		<hr>
+		
+		<p class="h4 mb-4">Save Leave Day</p>
+		
+		<form action="#" th:action="@{/leavedays/save}"
+						 th:object="${leavedays}" method="POST">
+						 
+						 
+			<!-- Add hiden form field to handle update -->
+			<input type="hidden" th:field="*{id}" />
+			
+			<input type="text" th:field="*{dateFrom}"
+					class="form-control mb-4 col-4" placeholder="Date From">
+			<input type="text" th:field="*{dateTo}"
+					class="form-control mb-4 col-4" placeholder="Date To">
+			<input type="text" th:field="*{leaveDays}"
+					class="form-control mb-4 col-4" placeholder="Leave Days">
+			<input type="text" th:field="*{year}"
+					class="form-control mb-4 col-4" placeholder="Year">
+		
+		<button type="submit" class="btn btn-info col-2">Save</button>
+					
+		</form>
+		
+		<hr>
+		<a th:href="@{/leavedays/list}">Back to Leave days List</a>
+	
+	</div>
+
+</body>
+
+
+</html>

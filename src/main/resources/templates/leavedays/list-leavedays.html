@@ -20,42 +20,44 @@
 <body>
 
 	<div class="container">
-		<h3>List of employees</h3>
+		<h3>List of leave days</h3>
 		<hr>
 
 		<!-- Add a button -->
-		<a th:href="@{/employees/showFormForAdd}"
-			class="btn btn-primary btn-sm mb-3 "> Add Employee </a>
+		<a th:href="@{/leavedays/showFormForAdd}"
+			class="btn btn-primary btn-sm mb-3 "> Add Leave Day </a>
 			
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email</th>
+					<th>Date From</th>
+					<th>Date to</th>
+					<th>Leave days</th>
+					<th>Year</th>
 					<th>Action</th>
+					
 				</tr>
 			</thead>
 
 			<tbody>
-				<tr th:each="tempEmployee: ${employees}">
-					<td th:text="${tempEmployee.firstName}" />
-					<td th:text="${tempEmployee.lastName}" />
-					<td th:text="${tempEmployee.tel}" />
-					
+				<tr th:each="tempLeaveDay: ${leavedays}">
+					<td th:text="${tempLeaveDay.dateFrom}" />
+					<td th:text="${tempLeaveDay.dateTo}" />
+					<td th:text="${tempLeaveDay.leaveDays}" />
+					<td th:text="${tempLeaveDay.year}" />
 					
 					<td>
 					
 						<!-- Add update button / link -->
-						<a th:href="@{/employees/showFormForUpdate(employeeId=${tempEmployee.id})}" 
+						<a th:href="@{/leavedays/showFormForUpdate(leavedaysId=${tempLeaveDay.id})}" 
 							class="btn btn-info btn-sm">
 						Update
 						</a>
 						
 						<!-- Add Delete button / link -->
-						<a th:href="@{/employees/delete(employeeId=${tempEmployee.id})}" 
+						<a th:href="@{/leavedays/delete(leavedaysId=${tempLeaveDay.id})}" 
 							class="btn btn-danger btn-sm"
-							onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+							onclick="if (!(confirm('Are you sure you want to delete this leave day?'))) return false">
 						Delete
 						</a>
 						
@@ -67,6 +69,7 @@
 
 
 		</table>
+		
 
 	</div>
 

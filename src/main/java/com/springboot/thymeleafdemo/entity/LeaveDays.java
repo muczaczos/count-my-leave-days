@@ -31,7 +31,7 @@ public class LeaveDays {
 	private Date dateFrom;
 	
 	@Column(name="date_to")
-	private Date to;
+	private Date dateTo;
 	
 	@Column(name="leave_days")
 	private int leaveDays;
@@ -47,19 +47,19 @@ public class LeaveDays {
 		
 	}
 
-	public LeaveDays(int id, Employee employee, Date dateFrom, Date to, int leaveDays, int year) {
+	public LeaveDays(int id, Employee employee, Date dateFrom, Date dateTo, int leaveDays, int year) {
 		this.id = id;
 		this.employee = employee;
 		this.dateFrom = dateFrom;
-		this.to = to;
+		this.dateTo = dateTo;
 		this.leaveDays = leaveDays;
 		this.year = year;
 	}
 	
-	public LeaveDays(Employee employee, Date dateFrom, Date to, int leaveDays, int year) {
+	public LeaveDays(Employee employee, Date dateFrom, Date dateTo, int leaveDays, int year) {
 		this.employee = employee;
 		this.dateFrom = dateFrom;
-		this.to = to;
+		this.dateTo = dateTo;
 		this.leaveDays = leaveDays;
 		this.year = year;
 	}
@@ -92,12 +92,12 @@ public class LeaveDays {
 		this.dateFrom = dateFrom;
 	}
 
-	public Date getTo() {
-		return to;
+	public Date getDateTo() {
+		return dateTo;
 	}
 
-	public void setTo(Date to) {
-		this.to = to;
+	public void setDateTo(Date dateTo) {
+		this.dateTo = dateTo;
 	}
 
 	public int getLeaveDays() {
@@ -121,7 +121,7 @@ public class LeaveDays {
 	////////////////////////////
 	@Override
 	public String toString() {
-		return "LeaveDays [id=" + id + ", employee=" + employee + ", dateFrom=" + dateFrom + ", to=" + to
+		return "LeaveDays [id=" + id + ", employee=" + employee + ", dateFrom=" + dateFrom + ", dateTo=" + dateTo
 				+ ", leaveDays=" + leaveDays + ", year=" + year + "]";
 	}
 	
