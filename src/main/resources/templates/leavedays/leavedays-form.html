@@ -25,7 +25,6 @@
 		<hr>
 		
 		<p class="h4 mb-4">Save Leave Day</p>
-		
 		<form action="#" th:action="@{/leavedays/save}"
 						 th:object="${leavedays}" method="POST">
 						 
@@ -33,6 +32,8 @@
 			<!-- Add hiden form field to handle update -->
 			<input type="hidden" th:field="*{id}" />
 			
+			<input type="text" th:field="*{employee}"
+					class="form-control mb-4 col-4" placeholder="Employee ID">
 			<input type="text" th:field="*{dateFrom}"
 					class="form-control mb-4 col-4" placeholder="Date From">
 			<input type="text" th:field="*{dateTo}"

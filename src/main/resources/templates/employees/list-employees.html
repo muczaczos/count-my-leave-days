@@ -30,18 +30,24 @@
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
+					<th>Employee ID</th>
 					<th>First Name</th>
 					<th>Last Name</th>
-					<th>Email</th>
+					<th>Tel</th>
+					<th>Leave days limit</th>
+					<th>Your's leave days</th>
 					<th>Action</th>
 				</tr>
 			</thead>
 
 			<tbody>
 				<tr th:each="tempEmployee: ${employees}">
+					<td th:text="${tempEmployee.id}" />
 					<td th:text="${tempEmployee.firstName}" />
 					<td th:text="${tempEmployee.lastName}" />
 					<td th:text="${tempEmployee.tel}" />
+					<td th:text="${tempEmployee.leaveDaysLimit}" />
+					<td th:text="${tempEmployee.yourLeaveDays}" />
 					
 					
 					<td>
@@ -67,6 +73,10 @@
 
 
 		</table>
+		
+		<hr>
+		
+		<a th:href="@{/}">Back to Home</a>
 
 	</div>
 

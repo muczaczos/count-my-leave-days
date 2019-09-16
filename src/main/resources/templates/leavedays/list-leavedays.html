@@ -30,6 +30,8 @@
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
 					<th>Date From</th>
 					<th>Date to</th>
 					<th>Leave days</th>
@@ -41,6 +43,8 @@
 
 			<tbody>
 				<tr th:each="tempLeaveDay: ${leavedays}">
+					<td th:text="${tempLeaveDay.employee.firstName}" />
+					<td th:text="${tempLeaveDay.employee.lastName}" />
 					<td th:text="${tempLeaveDay.dateFrom}" />
 					<td th:text="${tempLeaveDay.dateTo}" />
 					<td th:text="${tempLeaveDay.leaveDays}" />
@@ -70,6 +74,9 @@
 
 		</table>
 		
+	<hr>
+		
+	<a th:href="@{/}">Back to Home</a>
 
 	</div>
 
