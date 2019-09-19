@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="employee")
@@ -48,6 +52,9 @@ public class Employee {
 	@Column(name="your_leave_days")
 	private int yourLeaveDays;
 	
+	@Column(name="current_year")
+	private int currentYear;
+	
 	
 	// define constructors
 	
@@ -55,10 +62,8 @@ public class Employee {
 		
 	}
 
-
 	public Employee(int id, String login, String password, String firstName, String lastName, int tel,
-			Date dateOfEmployment, Date dateOfExpire, int leaveDaysLimit, int yourLeaveDays) {
-		super();
+			Date dateOfEmployment, Date dateOfExpire, int leaveDaysLimit, int yourLeaveDays, int currentYear) {
 		this.id = id;
 		this.login = login;
 		this.password = password;
@@ -69,14 +74,11 @@ public class Employee {
 		this.dateOfExpire = dateOfExpire;
 		this.leaveDaysLimit = leaveDaysLimit;
 		this.yourLeaveDays = yourLeaveDays;
+		this.currentYear = currentYear;
 	}
-
-
-
-	public Employee(String login, String password, String firstName, String lastName, int tel,
-			Date dateOfEmployment, Date dateOfExpire, int leaveDaysLimit, int yourLeaveDays) {
 	
-		
+	public Employee(String login, String password, String firstName, String lastName, int tel,
+			Date dateOfEmployment, Date dateOfExpire, int leaveDaysLimit, int yourLeaveDays, int currentYear) {
 		this.login = login;
 		this.password = password;
 		this.firstName = firstName;
@@ -86,7 +88,9 @@ public class Employee {
 		this.dateOfExpire = dateOfExpire;
 		this.leaveDaysLimit = leaveDaysLimit;
 		this.yourLeaveDays = yourLeaveDays;
+		this.currentYear = currentYear;
 	}
+
 
 
 	// define getter / setter
@@ -95,17 +99,13 @@ public class Employee {
 		return id;
 	}
 
-
-	// define toString method
-	
-	@Override
-	public String toString() {
-		return "Employee [id=" + id + ", login=" + login + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", tel=" + tel + ", dateOfEmployment=" + dateOfEmployment
-				+ ", dateOfExpire=" + dateOfExpire + ", leaveDaysLimit=" + leaveDaysLimit + ", yourLeaveDays="
-				+ yourLeaveDays + "]";
+	public int getCurrentYear() {
+		return currentYear;
 	}
 
+	public void setCurrentYear(int currentYear) {
+		this.currentYear = currentYear;
+	}
 
 	public void setId(int id) {
 		this.id = id;
@@ -201,11 +201,25 @@ public class Employee {
 		this.yourLeaveDays = yourLeaveDays;
 	}
 
+	
+
+	// define toString method
+	@Override
+	public String toString() {
+		return "Employee [id=" + id + ", login=" + login + ", password=" + password + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", tel=" + tel + ", dateOfEmployment=" + dateOfEmployment
+				+ ", dateOfExpire=" + dateOfExpire + ", leaveDaysLimit=" + leaveDaysLimit + ", yourLeaveDays="
+				+ yourLeaveDays + ", currentYear=" + currentYear + "]";
+	}
+
 
 	
+
+
+
+
 	
-	
-	
+
 	
 	
 

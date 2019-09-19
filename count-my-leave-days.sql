@@ -20,6 +20,7 @@ CREATE TABLE `employee` (
   `date_of_expire` date DEFAULT NULL,
   `leave_days_limit` int(2) DEFAULT NULL,
   `your_leave_days` int(2) DEFAULT NULL,
+  `current_year` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
@@ -40,7 +41,7 @@ CREATE TABLE `leave_days` (
 --
 
 INSERT INTO `employee` VALUES 
-	(1, 'login', 'password','Jan','Nowak','123456789','2019-01-20', null, 26, 20);
+	(1, 'login', 'password','Jan','Nowak','123456789','2019-01-20', null, 26, 20, '2019');
 
 INSERT INTO `leave_days` VALUES 
 	(1, 1, '2019-01-25', '2019-01-25', 1, 2019);
