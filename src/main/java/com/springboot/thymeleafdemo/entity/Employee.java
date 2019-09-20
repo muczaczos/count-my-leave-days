@@ -8,10 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.lang.Nullable;
 
 @Entity
 @Table(name="employee")
@@ -40,10 +38,11 @@ public class Employee {
 	private int tel;
 	
 	//I chooosen sql date format
-	@Column(name="date_of_employment")
+	@Nullable
+	@Column(name="date_of_employment", nullable = true)
 	private Date dateOfEmployment;
 	
-	@Column(name="date_of_expire")
+	@Column(name="date_of_expire", nullable = true)
 	private Date dateOfExpire;
 	
 	@Column(name="leave_days_limit")
