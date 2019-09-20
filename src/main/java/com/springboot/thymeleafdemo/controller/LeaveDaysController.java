@@ -1,8 +1,11 @@
 package com.springboot.thymeleafdemo.controller;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
-import java.util.List;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -15,6 +18,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Font.FontFamily;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 import com.springboot.thymeleafdemo.entity.Employee;
 import com.springboot.thymeleafdemo.entity.LeaveDays;
 import com.springboot.thymeleafdemo.service.EmployeeService;
@@ -23,7 +36,7 @@ import com.springboot.thymeleafdemo.service.LeaveDaysService;
 @Controller
 @RequestMapping("/leavedays")
 public class LeaveDaysController {
-
+	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -48,7 +61,7 @@ public class LeaveDaysController {
 	public String lisLeaveDays(Model theModel) {
 
 		// get leave days from db
-		List<LeaveDays> theLeaveDays = leaveDaysService.findAll();
+		java.util.List<LeaveDays> theLeaveDays = leaveDaysService.findAll();
 
 		// add to the spring model
 		theModel.addAttribute("leavedays", theLeaveDays);
@@ -127,5 +140,96 @@ public class LeaveDaysController {
 		return "redirect:/leavedays/list";
 
 	}
+
+	@GetMapping("/print")
+	public String print(@RequestParam("leavedaysId") int theId) throws FileNotFoundException, DocumentException {
+
+		Date date = leaveDaysService.findById(theId).getDateFrom();
+		LocalDate today = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		
+		Document document = new Document();
+        PdfWriter.getInstance(document, new FileOutputStream("purposal.pdf"));
+        document.open();
+
+        PdfPTable table = new PdfPTable(3);
+    	table.setWidthPercentage(100);
+    	table.addCell(getCell(employeeService.findById(theId).getFirstName() + " " +
+    	employeeService.findById(theId).getLastName(), PdfPCell.ALIGN_LEFT));
+    	table.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+    	table.addCell(getCell("Kobylin, dnia: " + today.format(formatter), PdfPCell.ALIGN_RIGHT));
+    	document.add(table);
+    	
+    	document.add( new Phrase("\n") );
+    	
+    	PdfPTable table4 = new PdfPTable(3);
+    	table4.setWidthPercentage(100);
+    	table4.addCell(getCell("", PdfPCell.ALIGN_LEFT));
+    	table4.addCell(getCell("WNIOSEK O URLOP", PdfPCell.ALIGN_CENTER));
+    	table4.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
+    	document.add(table4);
+    	
+    	document.add( new Phrase("\n") );
+    	document.add( new Phrase("\n") );
+    	
+    	PdfPTable table2 = new PdfPTable(3);
+    	table2.setWidthPercentage(100);
+    	table2.addCell(getCell("Prosze o udzielenie: ", PdfPCell.ALIGN_LEFT));
+    	table2.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+    	table2.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
+    	document.add(table2);
+    	
+    	Paragraph p2 = new Paragraph("Urlopu wypoczynkowego / bezpłatngo / okolicznościowego / opieki nad dzieckiem/ * w okresie od: ");
+    	document.add(p2);
+    	Paragraph p3 = new Paragraph("dnia: " + leaveDaysService.findById(theId).getDateFrom() + 
+    			" do dnia: " + leaveDaysService.findById(theId).getDateTo() + " wlacznie tj. " + 
+    			leaveDaysService.findById(theId).getLeaveDays() + " dni roboczych, za rok " + 
+    			leaveDaysService.findById(theId).getYear());
+    	document.add(p3);
+    	
+    	document.add( new Phrase("\n") );
+    	document.add( new Phrase("\n") );
+    	document.add( new Phrase("\n") );
+    	
+    	PdfPTable table5 = new PdfPTable(3);
+    	table5.setWidthPercentage(100);
+    	table5.addCell(getCell("...............................", PdfPCell.ALIGN_LEFT));
+    	table5.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+    	table5.addCell(getCell("...............................", PdfPCell.ALIGN_RIGHT));
+    	document.add(table5);
+    	
+    	PdfPTable table6 = new PdfPTable(3);
+    	table6.setWidthPercentage(100);
+    	table6.addCell(getCell("      podpis szefa", PdfPCell.ALIGN_LEFT));
+    	table6.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+    	table6.addCell(getCell("podpis pracownika", PdfPCell.ALIGN_RIGHT));
+    	document.add(table6);
+    	
+    	document.add( new Phrase("\n") );
+    	
+    	PdfPTable table7 = new PdfPTable(3);
+    	table7.setWidthPercentage(100);
+    	table7.addCell(getCell("", PdfPCell.ALIGN_LEFT));
+    	table7.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+    	table7.addCell(getCell("* niepotrzebne skreslic", PdfPCell.ALIGN_RIGHT));
+    	document.add(table7);
+       
+        // Start a new page
+        document.newPage();
+        
+        document.close();
+
+		return "redirect:/leavedays/list";
+
+	}
+	
+    private static PdfPCell getCell(String text, int alignment) {
+        PdfPCell cell = new PdfPCell(new Phrase(text));
+        cell.setPadding(0);
+        cell.setHorizontalAlignment(alignment);
+        cell.setBorder(PdfPCell.NO_BORDER);
+        return cell;
+    }
+
 
 }

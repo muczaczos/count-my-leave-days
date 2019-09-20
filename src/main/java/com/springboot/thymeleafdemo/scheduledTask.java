@@ -1,11 +1,8 @@
 package com.springboot.thymeleafdemo;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -15,10 +12,6 @@ import com.springboot.thymeleafdemo.service.EmployeeService;
 
 @Component
 public class scheduledTask {
-
-	private static final Logger log = LoggerFactory.getLogger(scheduledTask.class);
-
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
 	private EmployeeService employeeService;
 
@@ -31,9 +24,14 @@ public class scheduledTask {
 	}
 
 	/*
-	 * @Scheduled(fixedRate = 15000) //fires every 15 seconds public void addDupa()
-	 * { addLeaveDaysLimit2(); }
-	 */
+	  @Scheduled(fixedRate = 5000) //fires every 5 seconds public void addDupa()
+	  public void test() throws FileNotFoundException, DocumentException
+	  {
+		  
+		System.err.println("test");
+		  
+	  }
+	*/
 	
 	// @Scheduled(cron = "[Seconds] [Minutes] [Hours] [Day of month] [Month] [Day of
 	// week]")
