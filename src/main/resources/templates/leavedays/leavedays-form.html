@@ -32,14 +32,17 @@
 			<!-- Add hiden form field to handle update -->
 			<input type="hidden" th:field="*{id}" />
 			
+			<label>Employee ID</label>
 			<input type="text" th:field="*{employee}"
 					class="form-control mb-4 col-4" placeholder="Employee ID">
 			<input type="text" th:field="*{dateFrom}"
 					class="form-control mb-4 col-4" placeholder="Date From">
 			<input type="text" th:field="*{dateTo}"
 					class="form-control mb-4 col-4" placeholder="Date To">
+			<label>Leave Days</label>
 			<input type="text" th:field="*{leaveDays}"
 					class="form-control mb-4 col-4" placeholder="Leave Days">
+			<label>Year</label>
 			<input type="text" th:field="*{year}"
 					class="form-control mb-4 col-4" placeholder="Year">
 		
