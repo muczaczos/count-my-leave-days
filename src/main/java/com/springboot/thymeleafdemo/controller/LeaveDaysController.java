@@ -1,13 +1,23 @@
 package com.springboot.thymeleafdemo.controller;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -16,13 +26,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Font.FontFamily;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -39,7 +47,7 @@ public class LeaveDaysController {
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		dateFormat.setLenient(false);
 
 		// true passed to CustomDateEditor constructor means convert empty String to
@@ -222,6 +230,26 @@ public class LeaveDaysController {
 		return "redirect:/leavedays/list";
 
 	}
+	
+	 @RequestMapping(path = "/download", method = RequestMethod.GET)
+	    public ResponseEntity<Resource> download() throws IOException {
+	        File file = new File("C:\\Users\\KP-Karton\\eclipse-workspace\\count-my-leave-days\\purposal.pdf");
+
+	        HttpHeaders header = new HttpHeaders();
+	        header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=purposal.pdf");
+	        header.add("Cache-Control", "no-cache, no-store, must-revalidate");
+	        header.add("Pragma", "no-cache");
+	        header.add("Expires", "0");
+
+	        Path path = Paths.get(file.getAbsolutePath());
+	        ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+
+	        return ResponseEntity.ok()
+	                .headers(header)
+	                .contentLength(file.length())
+	                .contentType(MediaType.parseMediaType("application/octet-stream"))
+	                .body(resource);
+	 }
 	
     private static PdfPCell getCell(String text, int alignment) {
         PdfPCell cell = new PdfPCell(new Phrase(text));

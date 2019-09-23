@@ -58,11 +58,18 @@
 						Update
 						</a>
 						 -->
+						 
 						<!-- Add Print button / link -->
 						<a th:href="@{/leavedays/print(leavedaysId=${tempLeaveDay.id})}" 
 							class="btn btn-info btn-sm"
 							onclick="if (!(confirm('Are you sure you want to print proposal?'))) return false">
-						Print
+						Save
+						</a>
+						
+						<!-- Add Print button / link -->
+						<a th:href="@{/leavedays/download}" 
+							class="btn btn-info btn-sm">
+						Download
 						</a>
 						
 						<!-- Add Delete button / link -->
