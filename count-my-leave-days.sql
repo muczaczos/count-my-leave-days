@@ -41,7 +41,7 @@ CREATE TABLE `leave_days` (
   `leave_days` int(2) DEFAULT NULL,
   `year` int(4) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (`employee_id`) REFERENCES employee(id)
+  FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --

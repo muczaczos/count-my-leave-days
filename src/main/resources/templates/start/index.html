@@ -26,7 +26,16 @@
 	
 	<div class="container">
 		<h3>Days of Leave</h3>
+		
 		<hr>
+		
+		<!-- Add button -->
+		<a th:href="@{/leavedays/showFormForAdd}"
+			class="btn btn-primary btn-sm mb-3 "> Add Leave Day </a>
+			
+		<!-- Add a button -->
+		<a th:href="@{/employees/showFormForAdd}"
+			class="btn btn-primary btn-sm mb-3 "> Add Employee </a>
 
 		<a href="http://localhost:8080/employees/list">Go to Employees List</a>
 		
