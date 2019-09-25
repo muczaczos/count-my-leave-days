@@ -3,6 +3,9 @@ package com.springboot.thymeleafdemo.entity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -12,10 +15,11 @@ import javax.persistence.Table;
 public class Authorities {
 	
 	//define fields
-	@ManyToOne(cascade= {CascadeType.PERSIST, CascadeType.MERGE, 
-			 CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="username")
-	private Users users;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="username")
+	private String username;
+	
 	
 	@Column(name="authority")
 	private String authority;
@@ -26,23 +30,25 @@ public class Authorities {
 		
 	}
 
-	public Authorities(Users users, String authority) {
-		this.users = users;
+	public Authorities(String users, String authority) {
+		this.username = users;
 		this.authority = authority;
 	}
 
 	
 	//define getters and setters
-	public Users getUsers() {
-		return users;
-	}
-
-	public void setUsers(Users users) {
-		this.users = users;
-	}
+	
 
 	public String getAuthority() {
 		return authority;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public void setAuthority(String authority) {
