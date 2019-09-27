@@ -16,7 +16,6 @@ public class Authorities {
 	
 	//define fields
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="username")
 	private String username;
 	

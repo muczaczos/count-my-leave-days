@@ -15,8 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.springboot.thymeleafdemo.entity.Authorities;
 import com.springboot.thymeleafdemo.entity.Employee;
+import com.springboot.thymeleafdemo.entity.Users;
+import com.springboot.thymeleafdemo.service.AuthoritiesService;
 import com.springboot.thymeleafdemo.service.EmployeeService;
+import com.springboot.thymeleafdemo.service.UsersService;
 
 @Controller
 @RequestMapping("/employees")
@@ -33,9 +37,14 @@ public class EmployeeController {
 	}
 
 	private EmployeeService employeeService;
+	private UsersService usersService;
+	private AuthoritiesService authoritiesService;
 
-	public EmployeeController(EmployeeService theEmployeeService) {
+	public EmployeeController(EmployeeService theEmployeeService, UsersService theUsersService,
+			AuthoritiesService theAuthoritiesService) {
 		employeeService = theEmployeeService;
+		usersService = theUsersService;
+		authoritiesService = theAuthoritiesService;
 	}
 
 	// add mapping for "/list"
@@ -82,6 +91,23 @@ public class EmployeeController {
 
 		// save the employee
 		employeeService.save(theEmployee);
+
+		// set account enabled
+		byte enabled = 1;
+
+		// create new users object
+		Users theUser = new Users(theEmployee.getLogin(), "{noop}" + theEmployee.getPassword(), enabled);
+
+		// save user in db
+		usersService.save(theUser);
+
+		// create authorities object
+		Authorities theAuthorities = new Authorities(theEmployee.getLogin(), theEmployee.getRole());
+
+		// save authorities in db
+		authoritiesService.save(theAuthorities);
+
+		System.err.println(theEmployee.getLogin());
 
 		// use a redirect to prevent duplicate submissions
 		return "redirect:/employees/list";

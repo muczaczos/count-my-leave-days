@@ -61,7 +61,16 @@
 			<label>Date of Expire</label>
 			<input type="date" th:field="*{dateOfExpire}"
 					class="form-control mb-4 col-4" placeholder="Date of Expire" >
-		<button type="submit" class="btn btn-info col-2">Save</button>
+			<label>Role</label>
+			<br>
+			<select th:field="*{role}">
+    			<option th:value="ROLE_ADMIN" th:text="ROLE_ADMIN"></option>
+    			<option th:value="ROLE_EMPLOYEE" th:text="ROLE_EMPLOYEE"></option>
+    			<option th:value="ROLE_MANAGER" th:text="ROLE_MANAGER"></option>
+			</select>
+			<br>
+			<br>
+			<button type="submit" class="btn btn-info col-2">Save</button>
 					
 		</form>
 		

@@ -54,15 +54,35 @@ public class Employee {
 	@Column(name="current_year")
 	private int currentYear;
 	
+	@Column(name="role")
+	private String role;
 	
 	// define constructors
 	
 	public Employee() {
 		
 	}
+	
+	public Employee(String login, String password, String firstName, String lastName, int tel,
+			Date dateOfEmployment, Date dateOfExpire, int leaveDaysLimit, int yourLeaveDays, int currentYear,
+			String role) {
+		this.login = login;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.tel = tel;
+		this.dateOfEmployment = dateOfEmployment;
+		this.dateOfExpire = dateOfExpire;
+		this.leaveDaysLimit = leaveDaysLimit;
+		this.yourLeaveDays = yourLeaveDays;
+		this.currentYear = currentYear;
+		this.role = role;
+	}
+
 
 	public Employee(int id, String login, String password, String firstName, String lastName, int tel,
-			Date dateOfEmployment, Date dateOfExpire, int leaveDaysLimit, int yourLeaveDays, int currentYear) {
+			Date dateOfEmployment, Date dateOfExpire, int leaveDaysLimit, int yourLeaveDays, int currentYear,
+			String role) {
 		this.id = id;
 		this.login = login;
 		this.password = password;
@@ -74,20 +94,7 @@ public class Employee {
 		this.leaveDaysLimit = leaveDaysLimit;
 		this.yourLeaveDays = yourLeaveDays;
 		this.currentYear = currentYear;
-	}
-	
-	public Employee(String login, String password, String firstName, String lastName, int tel,
-			Date dateOfEmployment, Date dateOfExpire, int leaveDaysLimit, int yourLeaveDays, int currentYear) {
-		this.login = login;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.tel = tel;
-		this.dateOfEmployment = dateOfEmployment;
-		this.dateOfExpire = dateOfExpire;
-		this.leaveDaysLimit = leaveDaysLimit;
-		this.yourLeaveDays = yourLeaveDays;
-		this.currentYear = currentYear;
+		this.role = role;
 	}
 
 
@@ -200,7 +207,13 @@ public class Employee {
 		this.yourLeaveDays = yourLeaveDays;
 	}
 
-	
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
 
 	// define toString method
 	@Override
@@ -208,9 +221,11 @@ public class Employee {
 		return "Employee [id=" + id + ", login=" + login + ", password=" + password + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", tel=" + tel + ", dateOfEmployment=" + dateOfEmployment
 				+ ", dateOfExpire=" + dateOfExpire + ", leaveDaysLimit=" + leaveDaysLimit + ", yourLeaveDays="
-				+ yourLeaveDays + ", currentYear=" + currentYear + "]";
+				+ yourLeaveDays + ", currentYear=" + currentYear + ", role=" + role + "]";
 	}
 
+
+	
 
 	
 

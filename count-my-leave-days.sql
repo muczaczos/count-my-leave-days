@@ -8,9 +8,10 @@ DROP TABLE IF EXISTS `leave_days`;
 
 DROP TABLE IF EXISTS `employee`;
 
+DROP TABLE IF EXISTS `authorities`;
+
 DROP TABLE IF EXISTS `users`;
 
-DROP TABLE IF EXISTS `authorities`;
 
 --
 -- Table structure for table `employee`
@@ -27,6 +28,7 @@ CREATE TABLE `employee` (
   `leave_days_limit` int(2) DEFAULT NULL,
   `your_leave_days` int(2) DEFAULT NULL,
   `current_year` int DEFAULT NULL,
+  `role` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
@@ -66,13 +68,23 @@ CREATE TABLE `authorities` (
 
 
 --
+-- Data for table `employee` & `leave_days`
+--
+INSERT INTO `employee` VALUES 
+	(1, 'jan@tlen.pl', 'password','Jan','Nowak','123456789','2019-01-20', null, 26, 20, '2019','ROLE_EMPLOYEE');
+
+INSERT INTO `leave_days` VALUES 
+	(1, 1, '2019-01-25', '2019-01-25', 1, 2019);
+    
+--
 -- Inserting data for table `users`
 --
 INSERT INTO `users` 
 VALUES 
 ('john','{noop}test123',1),
 ('mary','{noop}test123',1),
-('susan','{noop}test123',1);
+('susan','{noop}test123',1),
+('jan@tlen.pl','{noop}password',1);
 
 --
 -- Inserting data for table `authorities`
@@ -83,13 +95,4 @@ VALUES
 ('mary','ROLE_EMPLOYEE'),
 ('mary','ROLE_MANAGER'),
 ('susan','ROLE_EMPLOYEE'),
-('susan','ROLE_ADMIN');
-
---
--- Data for table `employee` & `leave_days`
---
-INSERT INTO `employee` VALUES 
-	(1, 'login', 'password','Jan','Nowak','123456789','2019-01-20', null, 26, 20, '2019');
-
-INSERT INTO `leave_days` VALUES 
-	(1, 1, '2019-01-25', '2019-01-25', 1, 2019);
+('jan@tlen.pl','ROLE_ADMIN');
