@@ -96,10 +96,10 @@ public class UsersController {
 	}
 
 	@GetMapping("/delete")
-	public String delete(@RequestParam("usersId") int theId) {
+	public String delete(@RequestParam("username") String username) {
 
 		// delete the employee
-		usersService.deleteById(theId);
+		usersService.deleteUsers(username);
 
 		// use a redirect to /employees/list
 		return "redirect:/users/list";

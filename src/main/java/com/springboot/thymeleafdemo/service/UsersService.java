@@ -19,5 +19,7 @@ public interface UsersService {
 	
 	public List<Users> findByUsername(String username);
 	
+	public void deleteUsers(String username);
+	
 
 }

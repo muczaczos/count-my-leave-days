@@ -59,5 +59,13 @@ public class UsersServiceImpl implements UsersService {
 		return usersRepository.findByUsername(username);
 	}
 
+	@Override
+	public void deleteUsers(String username) {
+
+		usersRepository.deleteUsers(username);
+	}
+
+	
+
 	
 }
