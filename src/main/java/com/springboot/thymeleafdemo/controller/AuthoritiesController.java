@@ -32,6 +32,10 @@ public class AuthoritiesController {
 		// null
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
 	}
+	
+	public AuthoritiesController(AuthoritiesService authoritiesService) {
+		this.authoritiesService = authoritiesService;
+	}
 
 	private AuthoritiesService authoritiesService;
 	
