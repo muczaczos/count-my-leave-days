@@ -69,10 +69,14 @@ public class UsersController {
 	public String showFormForUpdate(@RequestParam("username") String username, Model theModel) {
 
 		// get the employee form the service
-		Users theUsers = usersService.findByUsername(username);
+		List<Users> theUsers = usersService.findByUsername(username);
+		Users theUsers2 = new Users();
+		for(Users users: theUsers) {
+			theUsers2 = users;
+		}
 
 		// set employee as a model attribute to pre-populate the form
-		theModel.addAttribute("users", theUsers);
+		theModel.addAttribute("users", theUsers2);
 
 		// sendn over to our form
 		return "users/user-form";

@@ -31,13 +31,12 @@
 		<form action="#" th:action="@{/users/save}"
 						 th:object="${users}" method="POST">
 						 
-						 
-			<!-- Add hiden form field to handle update -->
 			
-			<input type="text" th:field="*{username}"
-					class="form-control mb-4 col-4" placeholder="User name">
+			<!-- Add hiden form field to handle update -->
+			<label>Password</label>
 			<input type="text" th:field="*{password}"
 					class="form-control mb-4 col-4" placeholder="Password">
+			<label>Enabled</label>
 			<input type="text" th:field="*{enabled}"
 					class="form-control mb-4 col-4" placeholder="Enabled">
 		

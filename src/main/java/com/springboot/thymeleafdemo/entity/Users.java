@@ -16,10 +16,10 @@ public class Users {
 	@Column(name="username")
 	private String username;
 	
-	@Column
+	@Column(name="password")
 	private String password;
 	
-	@Column
+	@Column(name="enabled")
 	private byte enabled;
 	
 	//define constructors

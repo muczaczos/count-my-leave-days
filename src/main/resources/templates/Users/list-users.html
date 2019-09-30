@@ -31,6 +31,7 @@
 					<th>Username</th>
 					<th>Password</th>
 					<th>Enabled</th>
+					<th>Action</th>
 				</tr>
 			</thead>
 
@@ -44,7 +45,7 @@
 					<td>
 					
 						<!-- Add update button / link -->
-						<a th:href="@{/users/showFormForUpdate(username=${users.username})}" 
+						<a th:href="@{/users/showFormForUpdate(username=${tempUser.username})}" 
 							class="btn btn-info btn-sm">
 						Update
 						</a>
