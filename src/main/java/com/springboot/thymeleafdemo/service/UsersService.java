@@ -16,5 +16,7 @@ public interface UsersService {
 	public void save(Users theUser);
 	
 	public void deleteById(int theId);
+	
+	public Users findByUsername(String username);
 
 }

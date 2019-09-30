@@ -61,21 +61,21 @@ public class UsersController {
 
 		theModel.addAttribute("users", theUsers);
 
-		return "users/users-form";
+		return "users/user-form";
 
 	}
 	
 	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("usersId") int theId, Model theModel) {
+	public String showFormForUpdate(@RequestParam("username") String username, Model theModel) {
 
 		// get the employee form the service
-		Users theUsers = usersService.findById(theId);
+		Users theUsers = usersService.findByUsername(username);
 
 		// set employee as a model attribute to pre-populate the form
 		theModel.addAttribute("users", theUsers);
 
 		// sendn over to our form
-		return "users/users-form";
+		return "users/user-form";
 	}
 
 	@PostMapping("/save")
