@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<title>Update User Form</title>
+
+</head>
+
+<body>
+
+	<a th:href="@{/logout}">Logout</a>
+
+	<div class="container">
+	
+		<h3>Days of Leave</h3>
+		<hr>
+		
+		<p class="h4 mb-4">Update User</p>
+		
+		<form action="#" th:action="@{/users/save}"
+						 th:object="${users}" method="POST">
+						 
+						 
+			<!-- Add hiden form field to handle update -->
+			
+			<input type="text" th:field="*{username}"
+					class="form-control mb-4 col-4" placeholder="User name">
+			<input type="text" th:field="*{password}"
+					class="form-control mb-4 col-4" placeholder="Password">
+			<input type="text" th:field="*{enabled}"
+					class="form-control mb-4 col-4" placeholder="Enabled">
+		
+			<button type="submit" class="btn btn-info col-2">Save</button>
+					
+		</form>
+		
+		<hr>
+		<a th:href="@{/users/list}">Back to Users List</a>
+	
+	</div>
+
+</body>
+
+
+</html>
