@@ -59,7 +59,7 @@ public class AuthoritiesController {
 
 		theModel.addAttribute("authorities", theAuthorities);
 
-		return "authorities/authorities-form";
+		return "authorities/add-authorities-form";
 
 	}
 	
