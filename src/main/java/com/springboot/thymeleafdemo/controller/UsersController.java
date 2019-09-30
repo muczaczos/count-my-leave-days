@@ -61,7 +61,7 @@ public class UsersController {
 
 		theModel.addAttribute("users", theUsers);
 
-		return "users/user-form";
+		return "users/add-user-form";
 
 	}
 	
@@ -79,13 +79,15 @@ public class UsersController {
 		theModel.addAttribute("users", theUsers2);
 
 		// sendn over to our form
-		return "users/user-form";
+		return "users/update-user-form";
 	}
 
 	@PostMapping("/save")
 	public String saveUsers(@ModelAttribute("users") Users theUsers) {
+		
+		theUsers.setPassword("{noop}" + theUsers.getPassword());
 
-		// save the employee
+		// save the user
 		usersService.save(theUsers);
 
 		// use a redirect to prevent duplicate submissions
