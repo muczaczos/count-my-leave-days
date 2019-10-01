@@ -88,10 +88,10 @@ public class AuthoritiesController {
 	}
 
 	@GetMapping("/delete")
-	public String delete(@RequestParam("authoritiesId") int theId) {
+	public String delete(@RequestParam("username") String username) {
 
 		// delete the employee
-		authoritiesService.deleteById(theId);
+		authoritiesService.deleteAuthorities(username);
 
 		// use a redirect to /employees/list
 		return "redirect:/authorities/list";

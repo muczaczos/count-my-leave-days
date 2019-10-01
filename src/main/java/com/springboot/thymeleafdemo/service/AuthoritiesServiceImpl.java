@@ -52,8 +52,8 @@ public class AuthoritiesServiceImpl implements AuthoritiesService {
 	}
 
 	@Override
-	public void deleteById(int theId) {
-		authoritiesRepository.deleteById(theId);
+	public void deleteAuthorities(String username) {
+		authoritiesRepository.deleteAuthorities(username);
 
 	}
 
