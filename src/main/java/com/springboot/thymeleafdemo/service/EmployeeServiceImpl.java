@@ -54,4 +54,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 	}
 
+	@Override
+	public Employee findByLogin(String login) {
+	
+		return employeeRepository.findByLogin(login);
+	}
+
+	
+
+
 }

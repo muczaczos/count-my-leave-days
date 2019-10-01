@@ -29,7 +29,7 @@ public class LeaveDaysServiceImpl implements LeaveDaysService {
 	@Override
 	public LeaveDays findById(int theId) {
 		
-Optional<LeaveDays> result = leaveDaysRepository.findById(theId);
+		Optional<LeaveDays> result = leaveDaysRepository.findById(theId);
 		
 		LeaveDays theLeaveDays = null;
 		
@@ -57,5 +57,12 @@ Optional<LeaveDays> result = leaveDaysRepository.findById(theId);
 		leaveDaysRepository.deleteById(theId);
 
 	}
+
+	@Override
+	public List<LeaveDays> findAllById(int id) {
+		
+		return leaveDaysRepository.findAllById(id);
+	}
+
 
 }

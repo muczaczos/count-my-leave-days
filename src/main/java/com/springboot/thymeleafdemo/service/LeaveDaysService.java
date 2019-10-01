@@ -15,4 +15,7 @@ public interface LeaveDaysService {
 	
 	public void deleteById(int theId);
 	
+    public List<LeaveDays> findAllById(int id);
+
+	
 }
