@@ -23,46 +23,80 @@
 <body>
 
 	<a th:href="@{/logout}">Logout</a>
-	
+
 	<div class="container">
 		<h3>Days of Leave</h3>
-		
+
 		<hr>
-		
+
 		<!-- Add button -->
 		<a th:href="@{/leavedays/showFormForAdd}"
 			class="btn btn-primary btn-sm mb-3 "> Add Leave Day </a>
-			
+
 		<!-- Add a button -->
 		<a th:href="@{/employees/showFormForAdd}"
 			class="btn btn-primary btn-sm mb-3 "> Add Employee </a>
-			
+
 		<!-- Add a button -->
 		<a th:href="@{/users/showFormForAdd}"
 			class="btn btn-primary btn-sm mb-3 "> Add User </a>
-			
+
 		<!-- Add a button -->
 		<a th:href="@{/authorities/showFormForAdd}"
 			class="btn btn-primary btn-sm mb-3 "> Add Authority </a>
-			
+
 		<hr>
 
-		<a href="http://localhost:8080/employees/list">Go to Employees List</a>
-		
+		<a href="http://localhost:8080/employees/list">Go to Employees
+			List</a>
+
 		<hr>
-		
-		<a href="http://localhost:8080/leavedays/list">Go to Leave days List</a>
-		
+
+		<a href="http://localhost:8080/leavedays/list">Go to Leave days
+			List</a>
+
 		<hr>
-		
+
 		<a href="http://localhost:8080/users/list">Go to Users List</a>
-		
+
 		<hr>
-		
-		<a href="http://localhost:8080/authorities/list">Go to Authority List</a>
-		
+
+		<a href="http://localhost:8080/authorities/list">Go to Authority
+			List</a>
+
 		<hr>
-		
+
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="tempUser: ${users}">
+					<td th:text="${tempUser.username}" />
+					<td th:text="${tempUser.password}" />
+
+
+					<td>
+						<!-- Add update button / link --> <a
+						th:href="@{/users/showFormForUpdate(username=${tempUser.username})}"
+						class="btn btn-info btn-sm"> Update </a> 
+						
+					</td>
+
+				</tr>
+
+			</tbody>
+
+
+		</table>
+
+		<hr>
+
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
@@ -73,7 +107,7 @@
 					<th>Leave days</th>
 					<th>Year</th>
 					<th>Action</th>
-					
+
 				</tr>
 			</thead>
 
@@ -85,46 +119,35 @@
 					<td th:text="${tempLeaveDay.dateTo}" />
 					<td th:text="${tempLeaveDay.leaveDays}" />
 					<td th:text="${tempLeaveDay.year}" />
-					
+
 					<td>
-					
 						<!-- Add update button / link
 						<a th:href="@{/leavedays/showFormForUpdate(leavedaysId=${tempLeaveDay.id})}" 
 							class="btn btn-info btn-sm">
 						Update
 						</a>
-						 -->
-						 
-						<!-- Add Print button / link -->
-						<a th:href="@{/leavedays/print(leavedaysId=${tempLeaveDay.id})}" 
-							class="btn btn-info btn-sm"
-							onclick="if (!(confirm('Are you sure you want to print proposal?'))) return false">
-						Save
-						</a>
-						
-						<!-- Add Print button / link -->
-						<a th:href="@{/leavedays/download}" 
-							class="btn btn-info btn-sm">
-						Download
-						</a>
-						
-						<!-- Add Delete button / link -->
-						<a th:href="@{/leavedays/delete(leavedaysId=${tempLeaveDay.id})}" 
-							class="btn btn-danger btn-sm"
-							onclick="if (!(confirm('Are you sure you want to delete this leave day?'))) return false">
-						Delete
-						</a>
-						
+						 --> <!-- Add Print button / link --> <a
+						th:href="@{/leavedays/print(leavedaysId=${tempLeaveDay.id})}"
+						class="btn btn-info btn-sm"
+						onclick="if (!(confirm('Are you sure you want to print proposal?'))) return false">
+							Save </a> <!-- Add Print button / link --> <a
+						th:href="@{/leavedays/download}" class="btn btn-info btn-sm">
+							Download </a> <!-- Add Delete button / link --> <a
+						th:href="@{/leavedays/delete(leavedaysId=${tempLeaveDay.id})}"
+						class="btn btn-danger btn-sm"
+						onclick="if (!(confirm('Are you sure you want to delete this leave day?'))) return false">
+							Delete </a>
+
 					</td>
-					
+
 				</tr>
 
 			</tbody>
 
 
 		</table>
-		
-		
+
+
 	</div>
 
 </body>
