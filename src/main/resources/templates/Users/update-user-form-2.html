@@ -22,34 +22,32 @@
 	<a th:href="@{/logout}">Logout</a>
 
 	<div class="container">
-	
+
 		<h3>Days of Leave</h3>
 		<hr>
-		
+
 		<p class="h4 mb-4">Update User</p>
-		
-		<form action="#" th:action="@{/users/save}"
-						 th:object="${users}" method="POST">
-						 
-			
+
+		<form action="#" th:action="@{/users/save2}" th:object="${users}"
+			method="POST">
+
+
 			<!-- Add hiden form field to handle update -->
-			<label>Username</label>
-			<input type="text" th:field="*{username}"
-					class="form-control mb-4 col-4" placeholder="Username">
-			<label>Password</label>
+			<input type="hidden" th:field="*{username}"
+				class="form-control mb-4 col-4" placeholder="Username">
+			<input type="hidden" th:field="*{enabled}"
+				class="form-control mb-4 col-4" placeholder="Enabled"> <label>Password</label>
 			<input type="text" th:field="*{password}"
-					class="form-control mb-4 col-4" placeholder="Password">
-			<label>Enabled</label>
-			<input type="text" th:field="*{enabled}"
-					class="form-control mb-4 col-4" placeholder="Enabled">
-		
+				class="form-control mb-4 col-4" placeholder="Password">
+
+
 			<button type="submit" class="btn btn-info col-2">Save</button>
-					
+
 		</form>
-		
+
 		<hr>
 		<a th:href="@{/users/list}">Back to Users List</a>
-	
+
 	</div>
 
 </body>

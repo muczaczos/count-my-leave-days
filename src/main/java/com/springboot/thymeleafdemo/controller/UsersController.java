@@ -72,6 +72,7 @@ public class UsersController {
 		List<Users> theUsers = usersService.findByUsername(username);
 		Users theUsers2 = new Users();
 		for(Users users: theUsers) {
+			users.setPassword(users.getPassword().replace("{noop}", ""));
 			theUsers2 = users;
 		}
 
@@ -81,9 +82,40 @@ public class UsersController {
 		// sendn over to our form
 		return "users/update-user-form";
 	}
+	
+	@GetMapping("/showFormForUpdate2")
+	public String showFormForUpdate2(@RequestParam("username") String username, Model theModel) {
+
+		// get the employee form the service
+		List<Users> theUsers = usersService.findByUsername(username);
+		Users theUsers2 = new Users();
+		for(Users users: theUsers) {
+			users.setPassword(users.getPassword().replace("{noop}", ""));
+			theUsers2 = users;
+		}
+
+		// set employee as a model attribute to pre-populate the form
+		theModel.addAttribute("users", theUsers2);
+
+		// sendn over to our form
+		return "users/update-user-form-2";
+	}
 
 	@PostMapping("/save")
 	public String saveUsers(@ModelAttribute("users") Users theUsers) {
+		
+		theUsers.setPassword("{noop}" + theUsers.getPassword());
+
+		// save the user
+		usersService.save(theUsers);
+
+		// use a redirect to prevent duplicate submissions
+		return "redirect:/users/list";
+
+	}
+	
+	@PostMapping("/save2")
+	public String saveUsers2(@ModelAttribute("users") Users theUsers) {
 		
 		theUsers.setPassword("{noop}" + theUsers.getPassword());
 

@@ -84,7 +84,7 @@ VALUES
 ('john','{noop}test123',1),
 ('mary','{noop}test123',1),
 ('susan','{noop}test123',1),
-('jan@tlen.pl','{noop}password',1);
+('jan@tlen.pl','password',1);
 
 --
 -- Inserting data for table `authorities`
