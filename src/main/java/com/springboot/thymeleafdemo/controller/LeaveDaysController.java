@@ -11,6 +11,7 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.core.io.ByteArrayResource;
@@ -18,6 +19,8 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -38,6 +41,7 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.springboot.thymeleafdemo.entity.Employee;
 import com.springboot.thymeleafdemo.entity.LeaveDays;
+import com.springboot.thymeleafdemo.entity.Users;
 import com.springboot.thymeleafdemo.service.EmployeeService;
 import com.springboot.thymeleafdemo.service.LeaveDaysService;
 
@@ -83,6 +87,39 @@ public class LeaveDaysController {
 		// create model attribute to bind form data
 		LeaveDays theLeaveDays = new LeaveDays();
 
+		theModel.addAttribute("leavedays", theLeaveDays);
+
+		return "leavedays/leavedays-form";
+
+	}
+	
+	@GetMapping("/showFormForAdd2")
+	public String showFormForAdd2(Model theModel) {
+		
+		String username;
+		Employee theEmployee = new Employee();
+		
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		if (principal instanceof UserDetails) {
+			username = ((UserDetails) principal).getUsername();
+		} else {
+			username = principal.toString();
+		}
+
+		try {
+			// find the employee with username from actual session
+			theEmployee = employeeService.findByLogin(username);
+
+		} catch (NullPointerException e) {
+
+		}
+
+		// create model attribute to bind form data
+		LeaveDays theLeaveDays = new LeaveDays();
+		
+		// set the ID actual logged user
+		theLeaveDays.setEmployee(theEmployee);
+		
 		theModel.addAttribute("leavedays", theLeaveDays);
 
 		return "leavedays/leavedays-form";
