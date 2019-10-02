@@ -1,6 +1,5 @@
 <!-- Redirection -->
 <!-- <meta http-equiv="refresh" content="0; URL='employees/list'"> -->
-
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
@@ -27,47 +26,51 @@
 	<div class="container">
 		<h3>Days of Leave</h3>
 
-		<hr>
+		<div sec:authorize="hasRole('ROLE_ADMIN')">
+			<hr>
 
-		<!-- Add button -->
-		<a th:href="@{/leavedays/showFormForAdd}"
-			class="btn btn-primary btn-sm mb-3 "> Add Leave Day </a>
-			
+			<!-- Add button -->
+			<a th:href="@{/leavedays/showFormForAdd}"
+				class="btn btn-primary btn-sm mb-3 "> Add Leave Day </a>
+
+			<!-- Add a button -->
+			<a th:href="@{/employees/showFormForAdd}"
+				class="btn btn-primary btn-sm mb-3 "> Add Employee </a>
+
+			<!-- Add a button -->
+			<a th:href="@{/users/showFormForAdd}"
+				class="btn btn-primary btn-sm mb-3 "> Add User </a>
+
+			<!-- Add a button -->
+			<a th:href="@{/authorities/showFormForAdd}"
+				class="btn btn-primary btn-sm mb-3 "> Add Authority </a>
+
+			<hr>
+
+			<a href="http://localhost:8080/employees/list">Go to Employees
+				List</a>
+
+			<hr>
+
+			<a href="http://localhost:8080/leavedays/list">Go to Leave days
+				List</a>
+
+			<hr>
+
+			<a href="http://localhost:8080/users/list">Go to Users List</a>
+
+			<hr>
+
+			<a href="http://localhost:8080/authorities/list">Go to Authority
+				List</a>
+
+			<hr>
+		</div>
+
 		<!-- Add button -->
 		<a th:href="@{/leavedays/showFormForAdd2}"
-			class="btn btn-primary btn-sm mb-3 "> Add Leave Day without ID </a>
-
-		<!-- Add a button -->
-		<a th:href="@{/employees/showFormForAdd}"
-			class="btn btn-primary btn-sm mb-3 "> Add Employee </a>
-
-		<!-- Add a button -->
-		<a th:href="@{/users/showFormForAdd}"
-			class="btn btn-primary btn-sm mb-3 "> Add User </a>
-
-		<!-- Add a button -->
-		<a th:href="@{/authorities/showFormForAdd}"
-			class="btn btn-primary btn-sm mb-3 "> Add Authority </a>
-
-		<hr>
-
-		<a href="http://localhost:8080/employees/list">Go to Employees
-			List</a>
-
-		<hr>
-
-		<a href="http://localhost:8080/leavedays/list">Go to Leave days
-			List</a>
-
-		<hr>
-
-		<a href="http://localhost:8080/users/list">Go to Users List</a>
-
-		<hr>
-
-		<a href="http://localhost:8080/authorities/list">Go to Authority
-			List</a>
-
+			class="btn btn-primary btn-sm mb-3 "> Add Leave Day </a>
+		
 		<hr>
 
 		<table class="table table-bordered table-striped">
@@ -83,13 +86,11 @@
 				<tr th:each="tempUser: ${users}">
 					<td th:text="${tempUser.username}" />
 					<td th:text="${tempUser.password}" />
-
-
 					<td>
 						<!-- Add update button / link --> <a
 						th:href="@{/users/showFormForUpdate2(username=${tempUser.username})}"
-						class="btn btn-info btn-sm"> Update </a> 
-						
+						class="btn btn-info btn-sm"> Update </a>
+
 					</td>
 
 				</tr>
