@@ -67,10 +67,22 @@
 			<hr>
 		</div>
 
+		<div>
+			<p>
+			<p ></p>
+		</div>
+
+		<div class="card text-white bg-success mb-3" style="max-width: 9rem;">
+			<div class="card-header text-center">Counter</div>
+			<div class="card-body">
+				<h2 class="card-title text-center" th:text="${leavedayscounter}"></h2>
+			</div>
+		</div>
+
 		<!-- Add button -->
 		<a th:href="@{/leavedays/showFormForAdd2}"
 			class="btn btn-primary btn-sm mb-3 "> Add Leave Day </a>
-		
+
 		<hr>
 
 		<table class="table table-bordered table-striped">

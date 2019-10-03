@@ -53,6 +53,9 @@ public class StartController {
 			// find the leave days with id from theEmployee object
 			List<LeaveDays> theLeaveDays = leaveDayService.findAllByEmployee(theEmployee);
 			
+			// Leave days counter
+			int leaveDaysCounter = theEmployee.getYourLeaveDays();
+			
 			for(LeaveDays leavedays: theLeaveDays) {
 				System.err.println(leavedays.toString() + "\n");
 			}
@@ -65,6 +68,9 @@ public class StartController {
 
 			// add to the spring model
 			theModel.addAttribute("users", theUsers);
+			
+			// add to the spring model
+			theModel.addAttribute("leavedayscounter", leaveDaysCounter);
 						
 			System.err.println(username + " " + theEmployee.getId());
 		} catch (NullPointerException e) {
