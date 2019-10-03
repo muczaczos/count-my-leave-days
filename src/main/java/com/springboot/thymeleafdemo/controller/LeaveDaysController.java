@@ -160,7 +160,7 @@ public class LeaveDaysController {
 		employeeService.save(employee);
 
 		// use a redirect to prevent duplicate submissions
-		return "redirect:/leavedays/list";
+		return "redirect:/";
 
 	}
 

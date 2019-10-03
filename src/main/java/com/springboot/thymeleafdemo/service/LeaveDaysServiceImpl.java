@@ -59,9 +59,9 @@ public class LeaveDaysServiceImpl implements LeaveDaysService {
 	}
 
 	@Override
-	public List<LeaveDays> findAllById(int id) {
+	public List<LeaveDays> findAllByEmployee(Employee employee) {
 		
-		return leaveDaysRepository.findAllById(id);
+		return leaveDaysRepository.findAllByEmployee(employee);
 	}
 
 

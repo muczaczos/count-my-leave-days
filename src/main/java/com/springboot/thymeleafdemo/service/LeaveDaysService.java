@@ -2,6 +2,7 @@ package com.springboot.thymeleafdemo.service;
 
 import java.util.List;
 
+import com.springboot.thymeleafdemo.entity.Employee;
 import com.springboot.thymeleafdemo.entity.LeaveDays;
 
 public interface LeaveDaysService {
@@ -15,7 +16,7 @@ public interface LeaveDaysService {
 	
 	public void deleteById(int theId);
 	
-    public List<LeaveDays> findAllById(int id);
+    public List<LeaveDays> findAllByEmployee(Employee employee);
 
 	
 }

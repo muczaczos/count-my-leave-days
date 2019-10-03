@@ -51,8 +51,11 @@ public class StartController {
 			List<Users> theUsers = usersService.findByUsername(username);
 
 			// find the leave days with id from theEmployee object
-			List<LeaveDays> theLeaveDays = leaveDayService.findAllById(theEmployee.getId());
+			List<LeaveDays> theLeaveDays = leaveDayService.findAllByEmployee(theEmployee);
 			
+			for(LeaveDays leavedays: theLeaveDays) {
+				System.err.println(leavedays.toString() + "\n");
+			}
 
 			// add to the spring model
 			theModel.addAttribute("leavedays", theLeaveDays);
