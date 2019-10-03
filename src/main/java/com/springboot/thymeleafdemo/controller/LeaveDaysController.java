@@ -11,7 +11,6 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.core.io.ByteArrayResource;
@@ -41,7 +40,6 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.springboot.thymeleafdemo.entity.Employee;
 import com.springboot.thymeleafdemo.entity.LeaveDays;
-import com.springboot.thymeleafdemo.entity.Users;
 import com.springboot.thymeleafdemo.service.EmployeeService;
 import com.springboot.thymeleafdemo.service.LeaveDaysService;
 
@@ -182,13 +180,15 @@ public class LeaveDaysController {
 		leaveDaysService.deleteById(theId);
 
 		// use a redirect to /employees/list
-		return "redirect:/leavedays/list";
+		return "redirect:/";
 
 	}
 
 	@GetMapping("/print")
 	public String print(@RequestParam("leavedaysId") int theId) throws FileNotFoundException, DocumentException {
 
+		LeaveDays leaveDays = leaveDaysService.findById(theId);
+		
 		Date date = leaveDaysService.findById(theId).getDateFrom();
 		LocalDate today = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -199,8 +199,8 @@ public class LeaveDaysController {
 
         PdfPTable table = new PdfPTable(3);
     	table.setWidthPercentage(100);
-    	table.addCell(getCell(employeeService.findById(theId).getFirstName() + " " +
-    	employeeService.findById(theId).getLastName(), PdfPCell.ALIGN_LEFT));
+    	table.addCell(getCell(employeeService.findById(leaveDays.getEmployee().getId()).getFirstName() + " " +
+    	employeeService.findById(leaveDays.getEmployee().getId()).getLastName(), PdfPCell.ALIGN_LEFT));
     	table.addCell(getCell("", PdfPCell.ALIGN_CENTER));
     	table.addCell(getCell("Kobylin, dnia: " + today.format(formatter), PdfPCell.ALIGN_RIGHT));
     	document.add(table);
@@ -264,7 +264,7 @@ public class LeaveDaysController {
         
         document.close();
 
-		return "redirect:/leavedays/list";
+		return "redirect:/";
 
 	}
 	
