@@ -17,13 +17,34 @@
 
 <title>Days of Leave</title>
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#locales").change(function() {
+			var selectedOption = $('#locales').val();
+			if (selectedOption !== '') {
+				window.location.replace('?lang=' + selectedOption);
+			}
+		});
+	});
+</script>
+
 </head>
 
 <body>
 
+	<span th:text="#{lang.change}"></span>:
+	<select id="locales">
+		<option value=""></option>
+		<option value="en" th:text="#{lang.eng}"></option>
+		<option value="pl" th:text="#{lang.pl}"></option>
+	</select>
+
 	<a th:href="@{/logout}">Logout</a>
 
 	<div class="container">
+		<h1 th:text="#{add.leave.day}"></h1>
 		<h3>Days of Leave</h3>
 
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
@@ -69,7 +90,7 @@
 
 		<div>
 			<p>
-			<p ></p>
+			<p></p>
 		</div>
 
 		<div class="card text-white bg-success mb-3" style="max-width: 9rem;">
