@@ -13,24 +13,24 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-<title>Days of Leave</title>
+<title th:text="#{days.of.leave}"></title>
 
 </head>
 
 <body>
 
-	<a th:href="@{/logout}">Logout</a>
+	<a th:href="@{/logout}" th:text="#{logout}"></a>
    
 	<div class="container">
-		<h3>List of Authoritys</h3>
+		<h1 th:text="#{days.of.leave}"></h1>
 		<hr>
 			
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th>Username</th>
-					<th>Authority</th>
-					<th>Action</th>
+					<th th:text="#{username}"></th>
+					<th th:text="#{authority}"></th>
+					<th th:text="#{action}"></th>
 				</tr>
 			</thead>
 
@@ -44,15 +44,15 @@
 					
 						<!-- Add update button / link -->
 						<a th:href="@{/authorities/showFormForUpdate(username=${tempAuthority.username})}" 
-							class="btn btn-info btn-sm">
-						Update
+							class="btn btn-info btn-sm" th:text="#{update}">
+						
 						</a>
 						
 						<!-- Add Delete button / link -->
 						<a th:href="@{/authorities/delete(username=${tempAuthority.username})}" 
 							class="btn btn-danger btn-sm"
-							onclick="if (!(confirm('Are you sure you want to delete this authority?'))) return false">
-						Delete
+							onclick="if (!(confirm('Are you sure you want to delete this authority?'))) return false" th:text="#{delete}">
+						
 						</a>
 						
 					</td>
@@ -66,7 +66,7 @@
 		
 		<hr>
 		
-		<a th:href="@{/}">Back to Home</a>
+		<a th:href="@{/}" th:text="#{back.to.home}"></a>
 
 	</div>
 

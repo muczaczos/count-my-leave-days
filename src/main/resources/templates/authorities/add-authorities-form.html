@@ -13,43 +13,42 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-<title>Save Employee Form</title>
+<title th:text="#{days.of.leave}"></title>
 
 </head>
 
 <body>
 
-	<a th:href="@{/logout}">Logout</a>
-
+	<a th:href="@{/logout}" th:text="#{logout}"></a>
+   
 	<div class="container">
-	
-		<h3>Days of Leave</h3>
+		<h1 th:text="#{days.of.leave}"></h1>
 		<hr>
 		
-		<p class="h4 mb-4">Save Authorities</p>
+		<p class="h4 mb-4" th:text="#{save.authorities"></p>
 		
 		<form action="#" th:action="@{/authorities/save}"
 						 th:object="${authorities}" method="POST">
 						 
 		
-			<label>User name</label>
+			<label th:text="#{username}"></label>
 			<input type="text" th:field="*{username}"
 					class="form-control mb-4 col-4" placeholder="Username">
-			<label>Authority</label>
+			<label th:text="#{authority}"></label>
 			<br>
 			<select th:field="*{authority}">
-    			<option th:value="ROLE_ADMIN" th:text="ROLE_ADMIN"></option>
-    			<option th:value="ROLE_EMPLOYEE" th:text="ROLE_EMPLOYEE"></option>
-    			<option th:value="ROLE_MANAGER" th:text="ROLE_MANAGER"></option>
+    			<option th:value="ROLE_ADMIN" th:text="#{admin}"></option>
+    			<option th:value="ROLE_EMPLOYEE" th:text="#{employee}"></option>
+    			<option th:value="ROLE_MANAGER" th:text="#{manager}"></option>
 			</select>
 			<br>
 			<br>
-			<button type="submit" class="btn btn-info col-2">Save</button>
+			<button type="submit" class="btn btn-info col-2" th:text="#{save}"></button>
 					
 		</form>
 		
 		<hr>
-		<a th:href="@{/employees/list}">Back to Employees List</a>
+		<a th:href="@{/authorities/list}" th:text="#{back.to.authorities.list}"></a>
 	
 	</div>
 
