@@ -28,21 +28,9 @@ public class AuthoritiesServiceImpl implements AuthoritiesService {
 	}
 
 	@Override
-	public Authorities findById(int theId) {
+	public Authorities findByUsername(String username) {
 		
-		Optional<Authorities> result = authoritiesRepository.findById(theId);
-		
-		Authorities theAuthorities = null;
-		
-		if(result.isPresent()) {
-			theAuthorities = result.get();
-		}
-		else {
-			// we didn't find the employee
-			throw new RuntimeException("Did not find Authorities id - " + theId);
-		}
-		
-		return theAuthorities;
+		return authoritiesRepository.findByUsername(username);
 	}
 
 	@Override

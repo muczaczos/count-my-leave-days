@@ -34,7 +34,11 @@
 
 <body>
 
-	<span th:text="#{lang.change}"></span>:
+
+
+	<div class="container">
+	
+		<span th:text="#{lang.change}"></span>:
 	<select id="locales">
 		<option value=""></option>
 		<option value="en" th:text="#{lang.eng}"></option>
@@ -42,8 +46,6 @@
 	</select>
 
 	<a th:href="@{/logout}" th:text="#{logout}"></a>
-
-	<div class="container">
 		<h1 th:text="#{days.of.leave}"></h1>
 
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
@@ -136,8 +138,8 @@
 				<tr>
 					<th th:text="#{firstname}"> </th>
 					<th th:text="#{lastname}"> </th>
-					<th th:text="#{datefrom}"></th>
-					<th th:text="#{dateto}"> </th>
+					<th th:text="#{date.from}"></th>
+					<th th:text="#{date.to}"> </th>
 					<th th:text="#{leave.days}"> </th>
 					<th th:text="#{year}"></th>
 					<th th:text="#{action}"></th>

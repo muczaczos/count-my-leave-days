@@ -20,4 +20,6 @@ public interface AuthoritiesRepository extends JpaRepository<Authorities, Intege
 	@Transactional
     @Query("delete from Authorities a where a.username = ?1")
     public void deleteAuthorities(String username);
+	
+	public Authorities findByUsername(String username);
 }

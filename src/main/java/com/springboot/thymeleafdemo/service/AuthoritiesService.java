@@ -12,7 +12,7 @@ public interface AuthoritiesService {
 	
 	public List<Authorities> findAll();
 	
-	public Authorities findById(int theId);
+	public Authorities findByUsername(String username);
 	
 	public void save(Authorities theAuthorities);
 	

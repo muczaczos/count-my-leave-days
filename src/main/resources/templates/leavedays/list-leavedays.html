@@ -13,32 +13,51 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-<title>Days of Leave</title>
+<title th:text="#{days.of.leave}"></title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#locales").change(function() {
+			var selectedOption = $('#locales').val();
+			if (selectedOption !== '') {
+				window.location.replace('?lang=' + selectedOption);
+			}
+		});
+	});
+</script>
 
 </head>
 
 <body>
 
-	<a th:href="@{/logout}">Logout</a>
-
 	<div class="container">
-		<h3>List of leave days</h3>
+	
+		<span th:text="#{lang.change}"></span>:
+	<select id="locales">
+		<option value=""></option>
+		<option value="en" th:text="#{lang.eng}"></option>
+		<option value="pl" th:text="#{lang.pl}"></option>
+	</select>
+
+	<a th:href="@{/logout}" th:text="#{logout}"></a>
+		<h1 th:text="#{list.of.leave.days}"></h1>
 		<hr>
 
 		<!-- Add a button -->
 		<a th:href="@{/leavedays/showFormForAdd}"
-			class="btn btn-primary btn-sm mb-3 "> Add Leave Day </a>
+			class="btn btn-primary btn-sm mb-3 " th:text="#{add.leave.day}"></a>
 			
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Date From</th>
-					<th>Date to</th>
-					<th>Leave days</th>
-					<th>Year</th>
-					<th>Action</th>
+					<th th:text="#{firstname}"></th>
+					<th th:text="#{lastname}"></th>
+					<th th:text="#{date.from}"></th>
+					<th th:text="#{date.to}"></th>
+					<th th:text="#{leave.days}"></th>
+					<th th:text="#{year}"></th>
+					<th th:text="#{action}"></th>
 					
 				</tr>
 			</thead>
@@ -64,21 +83,21 @@
 						<!-- Add Print button / link -->
 						<a th:href="@{/leavedays/print(leavedaysId=${tempLeaveDay.id})}" 
 							class="btn btn-info btn-sm"
-							onclick="if (!(confirm('Are you sure you want to print proposal?'))) return false">
-						Save
+							onclick="if (!(confirm('Are you sure you want to print proposal?'))) return false" th:text="#{save}">
+						
 						</a>
 						
 						<!-- Add Print button / link -->
 						<a th:href="@{/leavedays/download}" 
-							class="btn btn-info btn-sm">
-						Download
+							class="btn btn-info btn-sm" th:text="#{download}">
+						
 						</a>
 						
 						<!-- Add Delete button / link -->
 						<a th:href="@{/leavedays/delete(leavedaysId=${tempLeaveDay.id})}" 
 							class="btn btn-danger btn-sm"
-							onclick="if (!(confirm('Are you sure you want to delete this leave day?'))) return false">
-						Delete
+							onclick="if (!(confirm('Are you sure you want to delete this leave day?'))) return false" th:text="#{delete}">
+						
 						</a>
 						
 					</td>
@@ -92,7 +111,7 @@
 		
 	<hr>
 		
-	<a th:href="@{/}">Back to Home</a>
+	<a th:href="@{/}" th:text="#{back.to.home}"></a>
 
 	</div>
 

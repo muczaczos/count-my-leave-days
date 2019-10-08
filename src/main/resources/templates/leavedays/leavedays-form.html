@@ -13,20 +13,40 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-<title>Save Leave Day Form</title>
+<title th:text="#{add.leave.day.form}"></title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#locales").change(function() {
+			var selectedOption = $('#locales').val();
+			if (selectedOption !== '') {
+				window.location.replace('?lang=' + selectedOption);
+			}
+		});
+	});
+</script>
 
 </head>
 
 <body>
 
-	<a th:href="@{/logout}">Logout</a>
-
 	<div class="container">
 	
-		<h3>Days of Leave</h3>
+		<span th:text="#{lang.change}"></span>:
+	<select id="locales">
+		<option value=""></option>
+		<option value="en" th:text="#{lang.eng}"></option>
+		<option value="pl" th:text="#{lang.pl}"></option>
+	</select>
+
+	<a th:href="@{/logout}" th:text="#{logout}"></a>
+		<h1 th:text="#{add.leave.day.form}"></h1>
+		<hr>
+		<h3 th:text="*{employee.firstName}"></h3> 
+		<h3 th:text="*{employee.lastName}"></h3>
 		<hr>
 		
-		<p class="h4 mb-4">Save Leave Day</p>
 		<form action="#" th:action="@{/leavedays/save}"
 						 th:object="${leavedays}" method="POST">
 						 
@@ -34,28 +54,30 @@
 			<!-- Add hiden form field to handle update -->
 			<input type="hidden" th:field="*{id}" />
 			
-			<label>Employee ID</label>
+			
 			<input type="text" th:field="*{employee}"
-					class="form-control mb-4 col-4" placeholder="Employee ID">
-			<label>Date from</label>
+					class="form-control mb-4 col-4" th:placeholder="#{employee.id}">
+					
+
+			<label th:text="#{date.from}"></label>
 			<input type="date" th:field="*{dateFrom}"
 					class="form-control mb-4 col-4" placeholder="Date From">
-			<label>Date to</label>
+			<label th:text="#{date.to}"></label>
 			<input type="date" th:field="*{dateTo}"
 					class="form-control mb-4 col-4" placeholder="Date To">
-			<label>Leave Days</label>
+			<label th:text="#{leave.days}"></label>
 			<input type="text" th:field="*{leaveDays}"
 					class="form-control mb-4 col-4" placeholder="Leave Days">
-			<label>Year</label>
+			<label th:text="#{year}"></label>
 			<input type="text" th:field="*{year}"
 					class="form-control mb-4 col-4" placeholder="Year">
 		
-		<button type="submit" class="btn btn-info col-2">Save</button>
+		<button type="submit" class="btn btn-info col-2" th:text="#{save}"></button>
 					
 		</form>
 		
 		<hr>
-		<a th:href="@{/leavedays/list}">Back to Leave days List</a>
+		<a th:href="@{/leavedays/list}" th:text="#{back.to.leave.days.list}"></a>
 	
 	</div>
 

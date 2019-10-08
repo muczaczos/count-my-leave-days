@@ -13,20 +13,38 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-<title>Update User Form</title>
+<title th:text="#{update.user.form}">Update User Form</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#locales").change(function() {
+			var selectedOption = $('#locales').val();
+			if (selectedOption !== '') {
+				window.location.replace('?lang=' + selectedOption);
+			}
+		});
+	});
+</script>
 
 </head>
 
 <body>
 
-	<a th:href="@{/logout}">Logout</a>
-
 	<div class="container">
+	
+		<span th:text="#{lang.change}"></span>:
+	<select id="locales">
+		<option value=""></option>
+		<option value="en" th:text="#{lang.eng}"></option>
+		<option value="pl" th:text="#{lang.pl}"></option>
+	</select>
 
-		<h3>Days of Leave</h3>
+	<a th:href="@{/logout}" th:text="#{logout}"></a>
+		<h1 th:text="#{update.user.form}"></h1>
 		<hr>
 
-		<p class="h4 mb-4">Update User</p>
+		<p class="h4 mb-4" th:text="#{update.user}"></p>
 
 		<form action="#" th:action="@{/users/save2}" th:object="${users}"
 			method="POST">
@@ -36,17 +54,18 @@
 			<input type="hidden" th:field="*{username}"
 				class="form-control mb-4 col-4" placeholder="Username">
 			<input type="hidden" th:field="*{enabled}"
-				class="form-control mb-4 col-4" placeholder="Enabled"> <label>Password</label>
+				class="form-control mb-4 col-4" placeholder="Enabled"> 
+			<label th:text="#{password}"></label>
 			<input type="text" th:field="*{password}"
 				class="form-control mb-4 col-4" placeholder="Password">
 
 
-			<button type="submit" class="btn btn-info col-2">Save</button>
+			<button type="submit" class="btn btn-info col-2" th:text="#{save}"></button>
 
 		</form>
 
 		<hr>
-		<a th:href="@{/users/list}">Back to Users List</a>
+		<a th:href="@{/users/list}" th:text="#{back.to.users.list}"></a>
 
 	</div>
 

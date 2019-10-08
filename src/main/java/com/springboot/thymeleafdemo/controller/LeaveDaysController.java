@@ -82,10 +82,14 @@ public class LeaveDaysController {
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
 
+		Employee theEmployee = new Employee();
+		
 		// create model attribute to bind form data
 		LeaveDays theLeaveDays = new LeaveDays();
 
 		theModel.addAttribute("leavedays", theLeaveDays);
+
+		theModel.addAttribute("employee", theEmployee);
 
 		return "leavedays/leavedays-form";
 
@@ -117,6 +121,8 @@ public class LeaveDaysController {
 		
 		// set the ID actual logged user
 		theLeaveDays.setEmployee(theEmployee);
+		
+		theModel.addAttribute("employee", theEmployee);
 		
 		theModel.addAttribute("leavedays", theLeaveDays);
 

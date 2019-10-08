@@ -64,16 +64,16 @@ public class AuthoritiesController {
 	}
 	
 	@GetMapping("/showFormForUpdate")
-	public String showFormForUpdate(@RequestParam("employeeId") int theId, Model theModel) {
+	public String showFormForUpdate(@RequestParam("username") String username, Model theModel) {
 
 		// get the employee form the service
-		Authorities theAuthorities = authoritiesService.findById(theId);
+		Authorities theAuthorities = authoritiesService.findByUsername(username);
 
 		// set employee as a model attribute to pre-populate the form
 		theModel.addAttribute("authorities", theAuthorities);
 
 		// sendn over to our form
-		return "authorities/authorities-form";
+		return "authorities/add-authorities-form";
 	}
 	
 	@PostMapping("/save")
