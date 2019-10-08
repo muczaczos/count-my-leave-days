@@ -13,20 +13,19 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-<title>Save Employee Form</title>
+<title th:text="#{add.employee.form}"></title>
 
 </head>
 
 <body>
 
-	<a th:href="@{/logout}">Logout</a>
+	<a th:href="@{/logout}" th:text="#{logout}"></a>
 
 	<div class="container">
-	
-		<h3>Days of Leave</h3>
+		<h1 th:text="#{add.employee.form}"></h1>
 		<hr>
 		
-		<p class="h4 mb-4">Save Employee</p>
+		<p class="h4 mb-4" th:text="#{save.employee}"></p>
 		
 		<form action="#" th:action="@{/employees/save}"
 						 th:object="${employee}" method="POST">
@@ -35,47 +34,52 @@
 			<!-- Add hiden form field to handle update -->
 			<input type="hidden" th:field="*{id}" />
 			
+			<label th:text="#{firstname}"></label>
 			<input type="text" th:field="*{firstName}"
 					class="form-control mb-4 col-4" placeholder="First name">
+			<label th:text="#{lastname}"></label>
 			<input type="text" th:field="*{lastName}"
 					class="form-control mb-4 col-4" placeholder="Last name">
+			<label th:text="#{username}"></label>
 			<input type="text" th:field="*{login}"
 					class="form-control mb-4 col-4" placeholder="login">
+			<label th:text="#{password}"></label>
 			<input type="text" th:field="*{password}"
 					class="form-control mb-4 col-4" placeholder="password">
-			<label>Telephone</label>
+			<label th:text="#{phonenumber}"></label>
 			<input type="text" th:field="*{tel}"
 					class="form-control mb-4 col-4" placeholder="999999999">
-			<label>Leave Days Limit</label>
+			<label th:text="#{leave.days.limit}"></label>
 			<input type="text" th:field="*{leaveDaysLimit}"
 					class="form-control mb-4 col-4" placeholder="Leave Days Limit">
-			<label>Your's Leave Days</label>
+			<label th:text="#{yours.leave.days}"></label>
 			<input type="text" th:field="*{yourLeaveDays}"
 					class="form-control mb-4 col-4" placeholder="Your's Leave Days">
-			<label>Current Year</label>
+			<label th:text="#{current.year}"></label>
 			<input type="text" th:field="*{currentYear}"
 					class="form-control mb-4 col-4" placeholder="Current Year">
-			<label>Date of Employment</label>
+			<label th:text="#{date.of.employment}"></label>
 			<input type="date" th:field="*{dateOfEmployment}"
 					class="form-control mb-4 col-4" placeholder="Date of Employment">
-			<label>Date of Expire</label>
+			<label th:text="#{date.of.expire}"></label>
 			<input type="date" th:field="*{dateOfExpire}"
 					class="form-control mb-4 col-4" placeholder="Date of Expire" >
-			<label>Role</label>
+			<label th:text="#{role}"></label>
 			<br>
 			<select th:field="*{role}">
-    			<option th:value="ROLE_ADMIN" th:text="ROLE_ADMIN"></option>
-    			<option th:value="ROLE_EMPLOYEE" th:text="ROLE_EMPLOYEE"></option>
-    			<option th:value="ROLE_MANAGER" th:text="ROLE_MANAGER"></option>
+    			<option th:value="ROLE_ADMIN" th:text="admin></option>
+    			<option th:value="ROLE_EMPLOYEE" th:text="employee"></option>
+    			<option th:value="ROLE_MANAGER" th:text="manager"></option>
 			</select>
 			<br>
 			<br>
-			<button type="submit" class="btn btn-info col-2">Save</button>
+			<button type="submit" class="btn btn-info col-2" th:text="#{save}"></button>
+			
 					
 		</form>
 		
 		<hr>
-		<a th:href="@{/employees/list}">Back to Employees List</a>
+		<a th:href="@{/employees/list}" th:text="#{back.to.employee.list}"></a>
 	
 	</div>
 
