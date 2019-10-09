@@ -54,16 +54,16 @@
 			<!-- Add hiden form field to handle update -->
 			<input type="hidden" th:field="*{id}" />
 			
-			
-			<input type="text" th:field="*{employee}"
+			<label th:text="#{employee.id}"></label>
+			<input th:pattern="([1-9])+(?:-?\d){1,4}" type="text" th:field="*{employee}"
 					class="form-control mb-4 col-4" th:placeholder="#{employee.id}">
 					
 
 			<label th:text="#{date.from}"></label>
-			<input type="date" th:field="*{dateFrom}"
+			<input required type="date" th:field="*{dateFrom}"
 					class="form-control mb-4 col-4" placeholder="Date From">
 			<label th:text="#{date.to}"></label>
-			<input type="date" th:field="*{dateTo}"
+			<input required type="date" th:field="*{dateTo}"
 					class="form-control mb-4 col-4" placeholder="Date To">
 			<label th:text="#{leave.days}"></label>
 			<input type="text" th:field="*{leaveDays}"
