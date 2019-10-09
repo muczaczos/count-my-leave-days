@@ -96,6 +96,7 @@ public class EmployeeController {
 		byte enabled = 1;
 
 		// create new users object
+		//Users theUser = new Users(theEmployee.getLogin(), "{noop}" + theEmployee.getPassword(), enabled);
 		Users theUser = new Users(theEmployee.getLogin(), "{noop}" + theEmployee.getPassword(), enabled);
 
 		// save user in db

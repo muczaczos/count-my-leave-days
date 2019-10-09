@@ -42,8 +42,7 @@ CREATE TABLE `leave_days` (
   `date_to` date DEFAULT NULL,
   `leave_days` int(2) DEFAULT NULL,
   `year` int(4) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
@@ -62,8 +61,7 @@ CREATE TABLE `users` (
 CREATE TABLE `authorities` (
   `username` varchar(50) NOT NULL,
   `authority` varchar(50) NOT NULL,
-  UNIQUE KEY `authorities_idx_1` (`username`,`authority`),
-  CONSTRAINT `authorities_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+  UNIQUE KEY `authorities_idx_1` (`username`,`authority`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
@@ -84,7 +82,7 @@ VALUES
 ('john','{noop}test123',1),
 ('mary','{noop}test123',1),
 ('susan','{noop}test123',1),
-('jan@tlen.pl','password',1);
+('jan@tlen.pl','{noop}password',1);
 
 --
 -- Inserting data for table `authorities`
