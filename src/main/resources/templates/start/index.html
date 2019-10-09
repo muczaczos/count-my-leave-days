@@ -47,10 +47,12 @@
 
 	<a th:href="@{/logout}" th:text="#{logout}"></a>
 		<h1 th:text="#{days.of.leave}"></h1>
+		
+		<h3 th:text="${employee.firstName} + ' ' + ${employee.lastName}"></h3>
 
 		<div sec:authorize="hasRole('ROLE_ADMIN')">
 			<hr>
-
+	
 			<!-- Add button -->
 			<a th:href="@{/leavedays/showFormForAdd}"
 				class="btn btn-primary btn-sm mb-3 " th:text="#{add.leave.day}"></a>

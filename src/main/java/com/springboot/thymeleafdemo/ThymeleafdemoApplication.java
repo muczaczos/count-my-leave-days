@@ -23,6 +23,8 @@ public class ThymeleafdemoApplication extends WebMvcConfigurerAdapter {
 		
 	}
 	
+	
+	
 	   @Bean
 	   public LocaleResolver localeResolver(){
 	        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
