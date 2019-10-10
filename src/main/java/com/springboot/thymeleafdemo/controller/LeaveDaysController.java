@@ -46,7 +46,7 @@ import com.springboot.thymeleafdemo.service.LeaveDaysService;
 @Controller
 @RequestMapping("/leavedays")
 public class LeaveDaysController {
-	
+
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -83,7 +83,7 @@ public class LeaveDaysController {
 	public String showFormForAdd(Model theModel) {
 
 		Employee theEmployee = new Employee();
-		
+
 		// create model attribute to bind form data
 		LeaveDays theLeaveDays = new LeaveDays();
 
@@ -94,13 +94,13 @@ public class LeaveDaysController {
 		return "leavedays/leavedays-form";
 
 	}
-	
+
 	@GetMapping("/showFormForAdd2")
 	public String showFormForAdd2(Model theModel) {
-		
+
 		String username;
 		Employee theEmployee = new Employee();
-		
+
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		if (principal instanceof UserDetails) {
 			username = ((UserDetails) principal).getUsername();
@@ -118,15 +118,15 @@ public class LeaveDaysController {
 
 		// create model attribute to bind form data
 		LeaveDays theLeaveDays = new LeaveDays();
-		
+
 		// set the ID actual logged user
 		theLeaveDays.setEmployee(theEmployee);
-		
+
 		theModel.addAttribute("employee", theEmployee);
-		
+
 		theModel.addAttribute("leavedays", theLeaveDays);
 
-		return "leavedays/leavedays-form";
+		return "leavedays/leavedays-form2";
 
 	}
 
@@ -194,113 +194,112 @@ public class LeaveDaysController {
 	public String print(@RequestParam("leavedaysId") int theId) throws FileNotFoundException, DocumentException {
 
 		LeaveDays leaveDays = leaveDaysService.findById(theId);
-		
+
 		Date date = leaveDaysService.findById(theId).getDateFrom();
 		LocalDate today = LocalDate.now();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		
-		Document document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream("purposal.pdf"));
-        document.open();
 
-        PdfPTable table = new PdfPTable(3);
-    	table.setWidthPercentage(100);
-    	table.addCell(getCell(employeeService.findById(leaveDays.getEmployee().getId()).getFirstName() + " " +
-    	employeeService.findById(leaveDays.getEmployee().getId()).getLastName(), PdfPCell.ALIGN_LEFT));
-    	table.addCell(getCell("", PdfPCell.ALIGN_CENTER));
-    	table.addCell(getCell("Kobylin, dnia: " + today.format(formatter), PdfPCell.ALIGN_RIGHT));
-    	document.add(table);
-    	
-    	document.add( new Phrase("\n") );
-    	
-    	PdfPTable table4 = new PdfPTable(3);
-    	table4.setWidthPercentage(100);
-    	table4.addCell(getCell("", PdfPCell.ALIGN_LEFT));
-    	table4.addCell(getCell("WNIOSEK O URLOP", PdfPCell.ALIGN_CENTER));
-    	table4.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
-    	document.add(table4);
-    	
-    	document.add( new Phrase("\n") );
-    	document.add( new Phrase("\n") );
-    	
-    	PdfPTable table2 = new PdfPTable(3);
-    	table2.setWidthPercentage(100);
-    	table2.addCell(getCell("Prosze o udzielenie: ", PdfPCell.ALIGN_LEFT));
-    	table2.addCell(getCell("", PdfPCell.ALIGN_CENTER));
-    	table2.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
-    	document.add(table2);
-    	
-    	Paragraph p2 = new Paragraph("Urlopu wypoczynkowego / bezpłatngo / okolicznościowego / opieki nad dzieckiem/ * w okresie od: ");
-    	document.add(p2);
-    	Paragraph p3 = new Paragraph("dnia: " + leaveDaysService.findById(theId).getDateFrom() + 
-    			" do dnia: " + leaveDaysService.findById(theId).getDateTo() + " wlacznie tj. " + 
-    			leaveDaysService.findById(theId).getLeaveDays() + " dni roboczych, za rok " + 
-    			leaveDaysService.findById(theId).getYear());
-    	document.add(p3);
-    	
-    	document.add( new Phrase("\n") );
-    	document.add( new Phrase("\n") );
-    	document.add( new Phrase("\n") );
-    	
-    	PdfPTable table5 = new PdfPTable(3);
-    	table5.setWidthPercentage(100);
-    	table5.addCell(getCell("...............................", PdfPCell.ALIGN_LEFT));
-    	table5.addCell(getCell("", PdfPCell.ALIGN_CENTER));
-    	table5.addCell(getCell("...............................", PdfPCell.ALIGN_RIGHT));
-    	document.add(table5);
-    	
-    	PdfPTable table6 = new PdfPTable(3);
-    	table6.setWidthPercentage(100);
-    	table6.addCell(getCell("      podpis szefa", PdfPCell.ALIGN_LEFT));
-    	table6.addCell(getCell("", PdfPCell.ALIGN_CENTER));
-    	table6.addCell(getCell("podpis pracownika", PdfPCell.ALIGN_RIGHT));
-    	document.add(table6);
-    	
-    	document.add( new Phrase("\n") );
-    	
-    	PdfPTable table7 = new PdfPTable(3);
-    	table7.setWidthPercentage(100);
-    	table7.addCell(getCell("", PdfPCell.ALIGN_LEFT));
-    	table7.addCell(getCell("", PdfPCell.ALIGN_CENTER));
-    	table7.addCell(getCell("* niepotrzebne skreslic", PdfPCell.ALIGN_RIGHT));
-    	document.add(table7);
-       
-        // Start a new page
-        document.newPage();
-        
-        document.close();
+		Document document = new Document();
+		PdfWriter.getInstance(document, new FileOutputStream("purposal.pdf"));
+		document.open();
+
+		PdfPTable table = new PdfPTable(3);
+		table.setWidthPercentage(100);
+		table.addCell(getCell(
+				employeeService.findById(leaveDays.getEmployee().getId()).getFirstName() + " "
+						+ employeeService.findById(leaveDays.getEmployee().getId()).getLastName(),
+				PdfPCell.ALIGN_LEFT));
+		table.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+		table.addCell(getCell("Kobylin, dnia: " + today.format(formatter), PdfPCell.ALIGN_RIGHT));
+		document.add(table);
+
+		document.add(new Phrase("\n"));
+
+		PdfPTable table4 = new PdfPTable(3);
+		table4.setWidthPercentage(100);
+		table4.addCell(getCell("", PdfPCell.ALIGN_LEFT));
+		table4.addCell(getCell("WNIOSEK O URLOP", PdfPCell.ALIGN_CENTER));
+		table4.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
+		document.add(table4);
+
+		document.add(new Phrase("\n"));
+		document.add(new Phrase("\n"));
+
+		PdfPTable table2 = new PdfPTable(3);
+		table2.setWidthPercentage(100);
+		table2.addCell(getCell("Prosze o udzielenie: ", PdfPCell.ALIGN_LEFT));
+		table2.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+		table2.addCell(getCell("", PdfPCell.ALIGN_RIGHT));
+		document.add(table2);
+
+		Paragraph p2 = new Paragraph(
+				"Urlopu wypoczynkowego / bezpłatngo / okolicznościowego / opieki nad dzieckiem/ * w okresie od: ");
+		document.add(p2);
+		Paragraph p3 = new Paragraph("dnia: " + leaveDaysService.findById(theId).getDateFrom() + " do dnia: "
+				+ leaveDaysService.findById(theId).getDateTo() + " wlacznie tj. "
+				+ leaveDaysService.findById(theId).getLeaveDays() + " dni roboczych, za rok "
+				+ leaveDaysService.findById(theId).getYear());
+		document.add(p3);
+
+		document.add(new Phrase("\n"));
+		document.add(new Phrase("\n"));
+		document.add(new Phrase("\n"));
+
+		PdfPTable table5 = new PdfPTable(3);
+		table5.setWidthPercentage(100);
+		table5.addCell(getCell("...............................", PdfPCell.ALIGN_LEFT));
+		table5.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+		table5.addCell(getCell("...............................", PdfPCell.ALIGN_RIGHT));
+		document.add(table5);
+
+		PdfPTable table6 = new PdfPTable(3);
+		table6.setWidthPercentage(100);
+		table6.addCell(getCell("      podpis szefa", PdfPCell.ALIGN_LEFT));
+		table6.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+		table6.addCell(getCell("podpis pracownika", PdfPCell.ALIGN_RIGHT));
+		document.add(table6);
+
+		document.add(new Phrase("\n"));
+
+		PdfPTable table7 = new PdfPTable(3);
+		table7.setWidthPercentage(100);
+		table7.addCell(getCell("", PdfPCell.ALIGN_LEFT));
+		table7.addCell(getCell("", PdfPCell.ALIGN_CENTER));
+		table7.addCell(getCell("* niepotrzebne skreslic", PdfPCell.ALIGN_RIGHT));
+		document.add(table7);
+
+		// Start a new page
+		document.newPage();
+
+		document.close();
 
 		return "redirect:/";
 
 	}
-	
-	 @RequestMapping(path = "/download", method = RequestMethod.GET)
-	    public ResponseEntity<Resource> download() throws IOException {
-	        File file = new File("C:\\Users\\KP-Karton\\eclipse-workspace\\count-my-leave-days\\purposal.pdf");
 
-	        HttpHeaders header = new HttpHeaders();
-	        header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=purposal.pdf");
-	        header.add("Cache-Control", "no-cache, no-store, must-revalidate");
-	        header.add("Pragma", "no-cache");
-	        header.add("Expires", "0");
+	@RequestMapping(path = "/download", method = RequestMethod.GET)
+	public ResponseEntity<Resource> download() throws IOException {
+		File file = new File("C:\\Users\\KP-Karton\\eclipse-workspace\\count-my-leave-days\\purposal.pdf");
 
-	        Path path = Paths.get(file.getAbsolutePath());
-	        ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
+		HttpHeaders header = new HttpHeaders();
+		header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=purposal.pdf");
+		header.add("Cache-Control", "no-cache, no-store, must-revalidate");
+		header.add("Pragma", "no-cache");
+		header.add("Expires", "0");
 
-	        return ResponseEntity.ok()
-	                .headers(header)
-	                .contentLength(file.length())
-	                .contentType(MediaType.parseMediaType("application/octet-stream"))
-	                .body(resource);
-	 }
-	
-    private static PdfPCell getCell(String text, int alignment) {
-        PdfPCell cell = new PdfPCell(new Phrase(text));
-        cell.setPadding(0);
-        cell.setHorizontalAlignment(alignment);
-        cell.setBorder(PdfPCell.NO_BORDER);
-        return cell;
-    }
+		Path path = Paths.get(file.getAbsolutePath());
+		ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
 
+		return ResponseEntity.ok().headers(header).contentLength(file.length())
+				.contentType(MediaType.parseMediaType("application/octet-stream")).body(resource);
+	}
+
+	private static PdfPCell getCell(String text, int alignment) {
+		PdfPCell cell = new PdfPCell(new Phrase(text));
+		cell.setPadding(0);
+		cell.setHorizontalAlignment(alignment);
+		cell.setBorder(PdfPCell.NO_BORDER);
+		return cell;
+	}
 
 }
