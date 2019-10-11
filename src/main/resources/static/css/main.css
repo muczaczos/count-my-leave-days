@@ -1,0 +1,51 @@
+.language{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.language-span{
+	margin-right: 10px;
+}
+
+.logout-link{
+	display: flex;
+	justify-content: flex-end;
+	padding: 10px;
+}
+
+.counter-card{
+	margin: 8px;
+}
+
+.add-card{
+	margin: 8px;
+}
+
+.add-day:link{
+	text-decoration: none;
+}
+
+.buttons-panel{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	
+}
+
+@media (max-width: 800px) {
+    .buttons-panel {
+     	 grid-template-columns: 1fr; 
+      }
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      

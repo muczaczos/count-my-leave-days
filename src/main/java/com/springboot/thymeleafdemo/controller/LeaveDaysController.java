@@ -191,7 +191,7 @@ public class LeaveDaysController {
 	}
 
 	@GetMapping("/print")
-	public String print(@RequestParam("leavedaysId") int theId) throws FileNotFoundException, DocumentException {
+	public String print(@RequestParam("leavedaysId") int theId) throws DocumentException, IOException {
 
 		LeaveDays leaveDays = leaveDaysService.findById(theId);
 
@@ -272,8 +272,8 @@ public class LeaveDaysController {
 		document.newPage();
 
 		document.close();
-
-		return "redirect:/";
+		
+		return "redirect:/leavedays/download";
 
 	}
 
