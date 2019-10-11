@@ -52,14 +52,19 @@
 			
 			<!-- Add hiden form field to handle update -->
 			<label th:text="#{username}"></label>
-			<input type="text" th:field="*{username}"
-					class="form-control mb-4 col-4" th:placeholder="#{username}">
+			<input required pattern="(?=^.{8,}$)[a-z].*$"
+					type="text" th:field="*{username}"
+					class="form-control mb-4 col-4" th:placeholder="#{username}"
+					th:title="#{only.upper.lower.special}">
 			<label th:text="#{password}"></label>
-			<input type="text" th:field="*{password}"
-					class="form-control mb-4 col-4" th:placeholder="#{password}">
+			<input required pattern="(?=^.{8,}$)[a-z].*$"
+					type="text" th:field="*{password}"
+					class="form-control mb-4 col-4" th:placeholder="#{password}"
+					th:title="#{only.upper.lower.special}">
 			<label th:text="#{enabled}"></label>
-			<input type="text" th:field="*{enabled}"
-					class="form-control mb-4 col-4" th:placeholder="#{enabled}">
+			<input required type="number" th:field="*{enabled}"
+					class="form-control mb-4 col-4" th:placeholder="#{enabled}"
+					min="0" max="1">
 		
 			<button type="submit" class="btn btn-info col-2" th:text="#{save}"></button>
 					

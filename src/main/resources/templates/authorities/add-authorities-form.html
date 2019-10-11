@@ -52,13 +52,15 @@
 						 
 		
 			<label th:text="#{username}"></label>
-			<input type="text" th:field="*{username}"
-					class="form-control mb-4 col-4" th:placeholder="#{username}">
+			<input required pattern="(?=^.{8,}$)[a-z].*$" 
+					type="text" th:field="*{username}"
+					class="form-control mb-4 col-4" th:placeholder="#{username}"
+					th:title="#{only.upper.lower.special}">
 			<label th:text="#{authority}"></label>
 			<br>
 			<select th:field="*{authority}">
+				<option th:value="ROLE_EMPLOYEE" th:text="#{employee}"></option>
     			<option th:value="ROLE_ADMIN" th:text="#{admin}"></option>
-    			<option th:value="ROLE_EMPLOYEE" th:text="#{employee}"></option>
     			<option th:value="ROLE_MANAGER" th:text="#{manager}"></option>
 			</select>
 			<br>

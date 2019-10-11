@@ -59,8 +59,10 @@
 			<input type="hidden" th:field="*{enabled}"
 				class="form-control mb-4 col-4" placeholder="Enabled"> 
 			<label th:text="#{password}"></label>
-			<input type="text" th:field="*{password}"
-				class="form-control mb-4 col-4" placeholder="Password">
+			<input required pattern="(?=^.{8,}$)[a-z].*$" 
+					type="text" th:field="*{password}"
+					class="form-control mb-4 col-4" placeholder="Password"
+					th:title="#{only.upper.lower.special}">
 
 
 			<button type="submit" class="btn btn-info col-2" th:text="#{save}"></button>

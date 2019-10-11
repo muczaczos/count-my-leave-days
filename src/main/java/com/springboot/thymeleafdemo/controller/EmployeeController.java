@@ -65,7 +65,7 @@ public class EmployeeController {
 	@GetMapping("/error")
 	public String listError(Model theModel) {
 
-		return "errors/username_exist";
+		return "error/username-exist";
 	}
 
 	@GetMapping("/showFormForAdd")
