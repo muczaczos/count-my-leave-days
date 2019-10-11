@@ -29,7 +29,8 @@ CREATE TABLE `employee` (
   `your_leave_days` int(2) DEFAULT NULL,
   `current_year` int DEFAULT NULL,
   `role` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+   UNIQUE KEY `employee_idx_1` (`login`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
 --
@@ -52,7 +53,8 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
-  PRIMARY KEY (`username`)
+  PRIMARY KEY (`username`),
+   UNIQUE KEY `users_idx_1` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -94,3 +96,15 @@ VALUES
 ('mary','ROLE_MANAGER'),
 ('susan','ROLE_EMPLOYEE'),
 ('jan@tlen.pl','ROLE_ADMIN');
+
+
+-- //set font encoding to uth8mb4 for special characters like: ę, ą, Ł, ó etc. 
+alter table `employee`
+modify column `first_name` longtext
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL ;
+alter table `employee`
+modify column `last_name` longtext
+CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NULL ;
+
+
+

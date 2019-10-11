@@ -55,40 +55,51 @@
 			<input type="hidden" th:field="*{id}" />
 			
 			<label th:text="#{firstname}"></label>
-			<input type="text" th:field="*{firstName}"
-					class="form-control mb-4 col-4" th:placeholder="#{firstname}">
+			<input required pattern="[a-zA-ZżŻźŹćĆóÓęĘąąĄśŚłŁńŃ]+" type="text" th:field="*{firstName}"
+					class="form-control mb-4 col-4" th:placeholder="#{firstname}"
+					th:title="#{only.characters}">
 			<label th:text="#{lastname}"></label>
-			<input type="text" th:field="*{lastName}"
-					class="form-control mb-4 col-4" th:placeholder="#{lastname}">
+			<input required pattern="[a-zA-ZżŻźŹćĆóÓęĘąąĄśŚłŁńŃ]+" type="text" th:field="*{lastName}"
+					class="form-control mb-4 col-4" th:placeholder="#{lastname}"
+					th:title="#{only.characters}">
 			<label th:text="#{username}"></label>
-			<input type="text" th:field="*{login}"
-					class="form-control mb-4 col-4" th:placeholder="#{username}">
+			<input required pattern="(?=^.{8,}$)[a-z].*$"  
+					type="text" th:field="*{login}"
+					class="form-control mb-4 col-4" th:placeholder="#{username}"
+					th:title="#{only.upper.lower.special}">
 			<label th:text="#{password}"></label>
-			<input type="text" th:field="*{password}"
-					class="form-control mb-4 col-4" th:placeholder="#{password}">
+			<input required pattern="(?=^.{8,}$)[a-z].*$" 
+					type="text" th:field="*{password}"
+					class="form-control mb-4 col-4" th:placeholder="#{password}"
+					th:title="#{only.upper.lower.special}">
 			<label th:text="#{phonenumber}"></label>
-			<input type="text" th:field="*{tel}"
-					class="form-control mb-4 col-4" placeholder="999999999">
+			<input required pattern="^([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])([0-9])" 
+					type="text" th:field="*{tel}"
+					class="form-control mb-4 col-4" placeholder="999999999"
+					th:title="#{only.phone.number}">
 			<label th:text="#{leave.days.limit}"></label>
-			<input type="text" th:field="*{leaveDaysLimit}"
-					class="form-control mb-4 col-4" placeholder="Leave Days Limit">
+			<input required type="number" th:field="*{leaveDaysLimit}"
+					class="form-control mb-4 col-4" placeholder="Leave Days Limit"
+					min="1" max="26">
 			<label th:text="#{yours.leave.days}"></label>
-			<input type="text" th:field="*{yourLeaveDays}"
-					class="form-control mb-4 col-4" placeholder="Your's Leave Days">
+			<input required type="number" th:field="*{yourLeaveDays}"
+					class="form-control mb-4 col-4" placeholder="Your's Leave Days"
+					min="1" max="26">
 			<label th:text="#{current.year}"></label>
-			<input type="text" th:field="*{currentYear}"
-					class="form-control mb-4 col-4" placeholder="Current Year">
+			<input required type="number" th:field="*{currentYear}"
+					class="form-control mb-4 col-4" placeholder="Current Year"
+					min="2000" max="3000">
 			<label th:text="#{date.of.employment}"></label>
-			<input type="date" th:field="*{dateOfEmployment}"
+			<input required type="date" th:field="*{dateOfEmployment}"
 					class="form-control mb-4 col-4" placeholder="Date of Employment">
 			<label th:text="#{date.of.expire}"></label>
-			<input type="date" th:field="*{dateOfExpire}"
+			<input required type="date" th:field="*{dateOfExpire}"
 					class="form-control mb-4 col-4" placeholder="Date of Expire" >
 			<label th:text="#{role}"></label>
 			<br>
 			<select th:field="*{role}">
+				<option th:value="ROLE_EMPLOYEE" th:text="employee"></option>
     			<option th:value="ROLE_ADMIN" th:text="admin"></option>
-    			<option th:value="ROLE_EMPLOYEE" th:text="employee"></option>
     			<option th:value="ROLE_MANAGER" th:text="manager"></option>
 			</select>
 			<br>

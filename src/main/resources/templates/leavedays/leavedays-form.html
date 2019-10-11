@@ -57,7 +57,7 @@
 			<label th:text="#{employee.id}"></label>
 			<input type="text" pattern="^([0-9]){0,3}" th:field="*{employee}"
 					class="form-control mb-4 col-4" th:placeholder="#{employee.id}"
-					th:title="#{only.numbers.1.999}">
+					th:title="#{only.numbers.1.999}" required>
 					
 
 			<label th:text="#{date.from}"></label>
@@ -67,13 +67,13 @@
 			<input required type="date" th:field="*{dateTo}"
 					class="form-control mb-4 col-4" placeholder="Date To">
 			<label th:text="#{leave.days}"></label>
-			<input pattern="^([1-9])([0-9]){0,1}" type="text" th:field="*{leaveDays}"
+			<input required type="number" th:field="*{leaveDays}"
 					class="form-control mb-4 col-4" placeholder="Leave Days"
-					th:title="#{only.numbers.1.99}">
+					min="1" max="26" >
 			<label th:text="#{year}"></label>
-			<input pattern="^([2])([0-9])([0-9])([0-9])" type="text" th:field="*{year}"
+			<input required type="number" th:field="*{year}"
 					class="form-control mb-4 col-4" placeholder="Year"
-					th:title="#{only.years.2000}">
+					min="2000" max="3000" >
 		
 		<button type="submit" class="btn btn-info col-2" th:text="#{save}"></button>
 					

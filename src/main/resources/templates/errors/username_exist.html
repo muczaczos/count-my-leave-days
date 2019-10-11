@@ -1,0 +1,58 @@
+<!-- Redirection -->
+<!-- <meta http-equiv="refresh" content="0; URL='employees/list'"> -->
+<!DOCTYPE HTML>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+<title th:text="#{days.of.leave}"></title>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#locales").change(function() {
+			var selectedOption = $('#locales').val();
+			if (selectedOption !== '') {
+				window.location.replace('?lang=' + selectedOption);
+			}
+		});
+	});
+</script>
+
+</head>
+
+<body>
+
+
+
+	<div class="container">
+
+		<span th:text="#{lang.change}"></span>: <select id="locales">
+			<option value=""></option>
+			<option value="en" th:text="#{lang.eng}"></option>
+			<option value="pl" th:text="#{lang.pl}"></option>
+		</select> <a th:href="@{/logout}" th:text="#{logout}"></a>
+		<h1 th:text="#{error}"></h1>
+
+		<h3 th:text="#{username.exist}"></h3>
+		
+		<hr>
+		<a th:href="@{/}" th:text="#{back.to.home}"></a>
+		
+	</div>
+
+</body>
+
+
+</html>

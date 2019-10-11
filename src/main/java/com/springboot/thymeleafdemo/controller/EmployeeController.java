@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -60,6 +61,12 @@ public class EmployeeController {
 
 		return "employees/list-employees";
 	}
+	
+	@GetMapping("/error")
+	public String listError(Model theModel) {
+
+		return "errors/username_exist";
+	}
 
 	@GetMapping("/showFormForAdd")
 	public String showFormForAdd(Model theModel) {
@@ -89,8 +96,14 @@ public class EmployeeController {
 	@PostMapping("/save")
 	public String saveEmployee(@ModelAttribute("employee") Employee theEmployee) {
 
-		// save the employee
-		employeeService.save(theEmployee);
+		//If that same username exist in db, catch the error and redirect to error page. 
+		try {
+			// save the employee
+			employeeService.save(theEmployee);
+		}catch(DataIntegrityViolationException  e) {
+			return "redirect:/employees/error";
+		}
+		
 
 		// set account enabled
 		byte enabled = 1;
