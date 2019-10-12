@@ -1,17 +1,3 @@
-.language{
-	display: flex;
-	justify-content: flex-end;
-}
-
-.language-span{
-	margin-right: 10px;
-}
-
-.logout-link{
-	display: flex;
-	justify-content: flex-end;
-	padding: 10px;
-}
 
 .counter-card{
 	margin: 8px;
@@ -27,9 +13,15 @@
 
 .buttons-panel{
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;	
+}
+
+.container{
+	margin-top: 16px;
+	margin-bottom: 16px;
 	
 }
+
 
 @media (max-width: 800px) {
     .buttons-panel {

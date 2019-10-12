@@ -37,16 +37,20 @@
 
 	<div class="container">
 
-	<div class="language">  
+	<div class="d-flex justify-content-between">  
 		<select class="language-select" id="locales">
 			<option value=""><p th:text="#{lang.change}"></p></option>
 			<option value="en" th:text="#{lang.eng}"></option>
 			<option value="pl" th:text="#{lang.pl}"></option>
 		</select> 
+		<div class="logout-link">
+				<a class="logout-link" th:href="@{/logout}" th:text="#{logout}"></a>
+		
+		</div>
 	</div>	
 	
-		<a class="logout-link" th:href="@{/logout}" th:text="#{logout}"></a>
-		
+	
+	
 		<hr>
 		
 		<h1 th:text="#{days.of.leave}"></h1>
