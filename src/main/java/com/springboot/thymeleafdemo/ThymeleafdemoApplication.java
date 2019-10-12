@@ -25,12 +25,12 @@ public class ThymeleafdemoApplication extends WebMvcConfigurerAdapter {
 		
 	}
 	
-	
+	Locale cLocale = new Locale.Builder().setLanguage("pl").setRegion("PL").build();
 	
 	   @Bean
 	   public LocaleResolver localeResolver(){
 	        SessionLocaleResolver localeResolver = new SessionLocaleResolver();
-	        localeResolver.setDefaultLocale(Locale.US);
+	        localeResolver.setDefaultLocale(cLocale);
 	        return  localeResolver;
 	    }
 
