@@ -12,7 +12,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
 <title th:text="#{add.authority.form}"></title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -32,16 +32,21 @@
 
 <body>
 
-	<div class="container">
-	
-		<span th:text="#{lang.change}"></span>:
-	<select id="locales">
-		<option value=""></option>
-		<option value="en" th:text="#{lang.eng}"></option>
-		<option value="pl" th:text="#{lang.pl}"></option>
-	</select>
+		<div class="container">
 
-	<a th:href="@{/logout}" th:text="#{logout}"></a>
+	<div class="d-flex justify-content-between">  
+		<select class="language-select" id="locales">
+			<option value=""><p th:text="#{lang.change}"></p></option>
+			<option value="en" th:text="#{lang.eng}"></option>
+			<option value="pl" th:text="#{lang.pl}"></option>
+		</select> 
+		<div class="logout-link">
+				<a class="logout-link" th:href="@{/logout}" th:text="#{logout}"></a>
+		
+		</div>
+	</div>	
+
+		<hr>
 		<h1 th:text="#{add.authority}"></h1>
 		<hr>
 		

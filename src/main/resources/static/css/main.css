@@ -11,6 +11,20 @@
 	text-decoration: none;
 }
 
+.admins-buttons-panel{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.admin-button{
+	color: white;
+	width: 95%;
+}
+
+.buttons{
+	text-align: center;
+}
+
 .buttons-panel{
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;	
@@ -19,15 +33,26 @@
 .container{
 	margin-top: 16px;
 	margin-bottom: 16px;
-	
 }
 
+@media (max-width: 1024px) {
+
+     .admins-buttons-panel{
+     	grid-template-columns: 1fr 1fr;
+     }
+     
+}
 
 @media (max-width: 800px) {
+	
     .buttons-panel {
      	 grid-template-columns: 1fr; 
       }
-      
+     
+     .admins-buttons-panel{
+     	grid-template-columns: 1fr;
+     }
+	}
       
       
       

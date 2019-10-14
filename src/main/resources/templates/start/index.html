@@ -13,9 +13,8 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="css/main.css"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
 <title th:text="#{days.of.leave}"></title>
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
@@ -33,8 +32,6 @@
 
 <body>
 
-
-
 	<div class="container">
 
 	<div class="d-flex justify-content-between">  
@@ -48,62 +45,114 @@
 		
 		</div>
 	</div>	
-	
-	
-	
+
 		<hr>
 		
 		<h1 th:text="#{days.of.leave}"></h1>
 
 		<h3 th:text="${employee.firstName} + ' ' + ${employee.lastName}"></h3>
+		
+		<hr> 
+		
+		<div class="admins-buttons-panel" sec:authorize="hasRole('ROLE_ADMIN')">
 
-		<div sec:authorize="hasRole('ROLE_ADMIN')">
-			<hr>
-
-			<!-- Add button -->
-			<a th:href="@{/leavedays/showFormForAdd}"
-				class="btn btn-primary btn-sm mb-3 " th:text="#{add.leave.day}"></a>
-
+		<div class="buttons">
 			<!-- Add a button -->
 			<a th:href="@{/employees/showFormForAdd}"
-				class="btn btn-primary btn-sm mb-3 " th:text="#{add.employee}"></a>
-
+				class="admin-button btn btn-warning mb-3 " th:text="#{add.employee}"></a>
+		
+			<a class="add-day" th:href="@{/employees/list}">
+				<div class="add-card card text-white bg-warning mb-3" style="min-width: 9rem;">
+					<h2 class="card-header text-center" th:text="#{employees}"></h2>
+					<div class="card-body">
+						<svg width="50px" aria-hidden="true" focusable="false" data-prefix="fas" 
+						data-icon="walking" class="svg-inline--fa fa-walking fa-w-10" role="img" 
+						xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path fill="currentColor" 
+						d="M208 96c26.5 0 48-21.5 48-48S234.5 0 208 0s-48 21.5-48 48 21.5 48 48 48zm94.5 
+						149.1l-23.3-11.8-9.7-29.4c-14.7-44.6-55.7-75.8-102.2-75.9-36-.1-55.9 10.1-93.3 25.2-21.6 
+						8.7-39.3 25.2-49.7 46.2L17.6 213c-7.8 15.8-1.5 35 14.2 42.9 15.6 7.9 34.6 1.5 42.5-14.3L81 
+						228c3.5-7 9.3-12.5 16.5-15.4l26.8-10.8-15.2 60.7c-5.2 20.8.4 42.9 14.9 58.8l59.9 65.4c7.2 7.9 
+						12.3 17.4 14.9 27.7l18.3 73.3c4.3 17.1 21.7 27.6 38.8 23.3 17.1-4.3 27.6-21.7 
+						23.3-38.8l-22.2-89c-2.6-10.3-7.7-19.9-14.9-27.7l-45.5-49.7 17.2-68.7 5.5 16.5c5.3 
+						16.1 16.7 29.4 31.7 37l23.3 11.8c15.6 7.9 34.6 1.5 42.5-14.3 7.7-15.7 1.4-35.1-14.3-43zM73.6 
+						385.8c-3.2 8.1-8 15.4-14.2 21.5l-50 50.1c-12.5 12.5-12.5 32.8 0 45.3s32.7 12.5 45.2 0l59.4-59.4c6.1-6.1 
+						10.9-13.4 14.2-21.5l13.5-33.8c-55.3-60.3-38.7-41.8-47.4-53.7l-20.7 51.5z"></path></svg>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+		<div class="buttons">
+			<!-- Add button -->
+			<a th:href="@{/leavedays/showFormForAdd}"
+				class="admin-button btn btn-danger mb-3 " th:text="#{add.leave.day}"></a>
+			
+		
+			<a class="add-day" th:href="@{/leavedays/list}">
+				<div class="add-card card text-white bg-danger mb-3" style="min-width: 9rem;">
+					<h2 class="card-header text-center" th:text="#{vacation1}"></h2>
+					<div class="card-body">
+						<svg width="70px" aria-hidden="true" focusable="false" data-prefix="far" data-icon="calendar-plus" 
+						class="svg-inline--fa fa-calendar-plus fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" 
+						viewBox="0 0 448 512"><path fill="currentColor" d="M336 
+						292v24c0 6.6-5.4 12-12 12h-76v76c0 6.6-5.4 12-12 12h-24c-6.6 0-12-5.4-12-12v-76h-76c-6.6 
+						0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h76v-76c0-6.6 5.4-12 12-12h24c6.6 0 12 5.4 12 
+						12v76h76c6.6 0 12 5.4 12 12zm112-180v352c0 26.5-21.5 48-48 48H48c-26.5 
+						0-48-21.5-48-48V112c0-26.5 21.5-48 48-48h48V12c0-6.6 5.4-12 12-12h40c6.6 0 
+						12 5.4 12 12v52h128V12c0-6.6 5.4-12 12-12h40c6.6 0 12 5.4 12 12v52h48c26.5 0 48 
+						21.5 48 48zm-48 346V160H48v298c0 3.3 2.7 6 6 6h340c3.3 0 6-2.7 6-6z"></path></svg>
+					</div>
+				</div>
+			</a>
+		</div>
+			
+		<div class="buttons">
 			<!-- Add a button -->
 			<a th:href="@{/users/showFormForAdd}"
-				class="btn btn-primary btn-sm mb-3 " th:text="#{add.user}"></a>
-
+				class="admin-button btn btn-success mb-3 " th:text="#{add.user}"></a>
+		
+			<a class="add-day" th:href="@{/users/list}">
+				<div class="add-card card text-white bg-success mb-3" style="min-width: 9rem;">
+					<h2 class="card-header text-center" th:text="#{users}"></h2>
+					<div class="card-body">
+						<svg width="70px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="user" 
+						class="svg-inline--fa fa-user fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" 
+						viewBox="0 0 448 512"><path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 
+						96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 
+						288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z">
+						</path></svg>
+					</div>
+				</div>
+			</a>
+		</div>
+		
+		<div class="buttons">
 			<!-- Add a button -->
 			<a th:href="@{/authorities/showFormForAdd}"
-				class="btn btn-primary btn-sm mb-3 " th:text="#{add.authority}"></a>
-
-			<hr>
-
-			<a href="http://localhost:8080/employees/list"
-				th:text="#{display.employees}"></a>
-
-			<hr>
-
-			<a href="http://localhost:8080/leavedays/list"
-				th:text="#{display.leave.days}"></a>
-
-			<hr>
-
-			<a href="http://localhost:8080/users/list" th:text="#{display.users}"></a>
-
-			<hr>
-
-			<a href="http://localhost:8080/authorities/list"
-				th:text="#{display.authorities}"></a>
-
-			<hr>
+				class="admin-button btn btn-primary mb-3 " th:text="#{add.authority}"></a>
+		
+			<a class="add-day" th:href="@{/authorities/list}">
+				<div class="add-card card text-white bg-primary mb-3" style="min-width: 9rem;">
+					<h2 class="card-header text-center" th:text="#{authorities}"></h2>
+					<div class="card-body">
+						<svg width="80px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="key" class="svg-inline--fa fa-key fa-w-16" role="img" 
+						xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M512 176.001C512 273.203 433.202 
+						352 336 352c-11.22 0-22.19-1.062-32.827-3.069l-24.012 27.014A23.999 23.999 0 0 1 261.223 384H224v40c0 13.255-10.745 24-24 
+						24h-40v40c0 13.255-10.745 24-24 24H24c-13.255 0-24-10.745-24-24v-78.059c0-6.365 2.529-12.47 
+						7.029-16.971l161.802-161.802C163.108 213.814 160 195.271 160 176 160 78.798 238.797.001 335.999 0 
+						433.488-.001 512 78.511 512 176.001zM336 128c0 26.51 21.49 48 48 48s48-21.49 48-48-21.49-48-48-48-48 21.49-48 48z">
+						</path></svg>
+					</div>
+				</div>
+			</a>
 		</div>
-
-		<div>
-			<p>
-			<p></p>
+		
 		</div>
-
-
+		
+		<div class="admins-buttons-panel" sec:authorize="hasRole('ROLE_ADMIN')">
+		<hr>
+		</div>
+		
 		<div class="buttons-panel" sec:authorize="hasRole('ROLE_EMPLOYEE')">
 			
 			<div class="counter-card card text-white bg-success mb-3" style="min-width: 9rem;">
@@ -157,8 +206,6 @@
 
 
 		</table>
-
-		<hr>
 
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">

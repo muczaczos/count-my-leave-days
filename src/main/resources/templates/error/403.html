@@ -37,21 +37,27 @@
 
 
 	<div class="container">
-	
-		<span th:text="#{lang.change}"></span>:
-	<select id="locales">
-		<option value=""></option>
-		<option value="en" th:text="#{lang.eng}"></option>
-		<option value="pl" th:text="#{lang.pl}"></option>
-	</select>
 
-	<a th:href="@{/logout}" th:text="#{logout}"></a>
+	<div class="d-flex justify-content-between">  
+		<select class="language-select" id="locales">
+			<option value=""><p th:text="#{lang.change}"></p></option>
+			<option value="en" th:text="#{lang.eng}"></option>
+			<option value="pl" th:text="#{lang.pl}"></option>
+		</select> 
+		<div class="logout-link">
+				<a class="logout-link" th:href="@{/logout}" th:text="#{logout}"></a>
+		
+		</div>
+	</div>	
+
+		<hr>
+		
 		<h1 th:text="#{page.not.found}"></h1>
 		
 	<hr>
 		
 	<a th:href="@{/}" th:text="#{back.to.home}"></a>
-
+	</div>
 </body>
 
 
