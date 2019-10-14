@@ -35,11 +35,21 @@
 	margin-bottom: 16px;
 }
 
+.employee-form{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 10px;
+}
+
 @media (max-width: 1024px) {
 
      .admins-buttons-panel{
      	grid-template-columns: 1fr 1fr;
      }
+     
+     .employee-form{
+	grid-template-columns: 1fr 1fr;
+}
      
 }
 
@@ -52,6 +62,9 @@
      .admins-buttons-panel{
      	grid-template-columns: 1fr;
      }
+     
+     .employee-form{
+	grid-template-columns: 1fr;
 	}
       
       
