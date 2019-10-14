@@ -1,6 +1,8 @@
 package com.springboot.thymeleafdemo.controller;
 
+import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -47,6 +49,14 @@ public class StartController {
 			// find the employee with username from actual session
 			Employee theEmployee = employeeService.findByLogin(username);
 			
+			//Count days from day of employment
+			Date dateOfemployment = theEmployee.getDateOfEmployment();
+			Date today = new Date();
+			
+		    long days = today.getTime() - dateOfemployment.getTime();
+		    
+		    long daysInCompany = TimeUnit.DAYS.convert(days, TimeUnit.MILLISECONDS);
+			
 			// find the users with username from actual session
 			List<Users> theUsers = usersService.findByUsername(username);
 
@@ -59,6 +69,9 @@ public class StartController {
 			for(LeaveDays leavedays: theLeaveDays) {
 				System.err.println(leavedays.toString() + "\n");
 			}
+			
+			// add to the spring model
+			theModel.addAttribute("daysincompany", daysInCompany);
 
 			// add to the spring model
 			theModel.addAttribute("leavedays", theLeaveDays);

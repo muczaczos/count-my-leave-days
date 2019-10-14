@@ -163,10 +163,10 @@
 			</div>
 			
 			<div class="counter-card card text-white bg-danger mb-3" style="min-width: 9rem;">
-				<div class="card-header text-center" >Ilość dni w KP-Karton</div>
+				<div class="card-header text-center" th:text="#{days.in.company}"></div>
 
 				<div class="card-body">
-					<h2 class="card-title text-center">5125</h2>
+					<h2 class="card-title text-center" th:text="${daysincompany} + ' ' + #{days}"></h2>
 				</div>
 			</div>
 			
