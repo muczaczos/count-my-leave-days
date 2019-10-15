@@ -3,16 +3,15 @@ package com.springboot.thymeleafdemo.config;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -53,6 +52,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             	.antMatchers("/authorities/showFormForUpdate").hasRole("ADMIN")
             	.antMatchers("/authorities/save").hasRole("ADMIN")
             	.antMatchers("/authorities/delete").hasRole("ADMIN")
+            	.antMatchers(
+                        "/",
+                        "/js/**",
+                        "/css/**",
+                        "/img/**").permitAll()
             	.anyRequest().authenticated()
             .and()
             	.formLogin()
@@ -60,8 +64,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             	.loginProcessingUrl("/authenticateTheUser")
             	.permitAll()
             .and()
-            	.logout()
-            	.logoutUrl("/logout")
+            .logout()
+            .invalidateHttpSession(true)
+            .clearAuthentication(true)
+            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+            .logoutSuccessUrl("/showMyLoginPage")
+            .permitAll()
             	.permitAll();
     }
     
