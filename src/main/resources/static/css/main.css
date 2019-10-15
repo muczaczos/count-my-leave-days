@@ -1,81 +1,87 @@
+body {
+	
+}
 
-.counter-card{
+html {
+	
+}
+
+.counter-card {
 	margin: 8px;
 }
 
-.add-card{
+.add-card {
 	margin: 8px;
 }
 
-.add-day:link{
+.add-day:link {
 	text-decoration: none;
 }
 
-.admins-buttons-panel{
+.admins-buttons-panel {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.admin-button{
+.admin-button {
 	color: white;
 	width: 95%;
 }
 
-.buttons{
+.buttons {
 	text-align: center;
 }
 
-.buttons-panel{
+.buttons-panel {
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;	
+	grid-template-columns: 1fr 1fr 1fr;
 }
 
-.container{
+.container {
 	margin-top: 16px;
 	margin-bottom: 16px;
 }
 
-.employee-form{
+.employee-form {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 10px;
 }
 
-@media (max-width: 1024px) {
-
-     .admins-buttons-panel{
-     	grid-template-columns: 1fr 1fr;
-     }
-     
-     .employee-form{
-	grid-template-columns: 1fr 1fr;
-}
-     
+.login-form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-@media (max-width: 800px) {
-	
-    .buttons-panel {
-     	 grid-template-columns: 1fr; 
-      }
-     
-     .admins-buttons-panel{
-     	grid-template-columns: 1fr;
-     }
-     
-     .employee-form{
-	grid-template-columns: 1fr;
+.login-container {
+	margin-top: 100px;
+	width: 30%;
+}
+
+@media ( max-width : 1024px) {
+	.admins-buttons-panel {
+		grid-template-columns: 1fr 1fr;
 	}
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+	.employee-form {
+		grid-template-columns: 1fr 1fr;
+	}
+	
+	.login-container {
+	margin-top: 10px;
+	width: 90%;
+}
+
+}
+
+@media ( max-width : 800px) {
+	.buttons-panel {
+		grid-template-columns: 1fr;
+	}
+	.admins-buttons-panel {
+		grid-template-columns: 1fr;
+	}
+	.employee-form {
+		grid-template-columns: 1fr;
+	}
+}

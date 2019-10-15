@@ -5,6 +5,7 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -33,6 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	
+    	//redirection after success login
+    	http.formLogin().defaultSuccessUrl("/", true);
+    	
         http.authorizeRequests()
             	.antMatchers("/employees/list").hasRole("ADMIN")
             	.antMatchers("/employees/showFormForAdd").hasRole("ADMIN")
@@ -52,12 +57,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             	.antMatchers("/authorities/showFormForUpdate").hasRole("ADMIN")
             	.antMatchers("/authorities/save").hasRole("ADMIN")
             	.antMatchers("/authorities/delete").hasRole("ADMIN")
-            	.antMatchers(
+             	.antMatchers(
                         "/js/**",
                         "/css/**",
                         "/img/**").permitAll()
+            	//antMatchers below is needed for i18n on login page. 
+            	.antMatchers("/showMyLoginPage/**").permitAll().anyRequest().fullyAuthenticated()
             	.anyRequest().authenticated()
-            .and()
+                .and()
             	.formLogin()
             	.loginPage("/showMyLoginPage")
             	.loginProcessingUrl("/authenticateTheUser")
