@@ -64,19 +64,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             	//antMatchers below is needed for i18n on login page. 
             	.antMatchers("/showMyLoginPage/**").permitAll().anyRequest().fullyAuthenticated()
             	.anyRequest().authenticated()
-                .and()
+            .and()
             	.formLogin()
             	.loginPage("/showMyLoginPage")
             	.loginProcessingUrl("/authenticateTheUser")
             	.permitAll()
             .and()
-            .logout()
-            .invalidateHttpSession(true)
-            .clearAuthentication(true)
-            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-            .logoutSuccessUrl("/showMyLoginPage")
-            .permitAll()
-            	.permitAll();
+            	.logout().permitAll();
+        		//.permitAll();
     }
     
     @Bean

@@ -26,7 +26,10 @@
 			}
 		});
 	});
+	
+
 </script>
+
 
 </head>
 
@@ -40,11 +43,16 @@
 			<option value="en" th:text="#{lang.eng}"></option>
 			<option value="pl" th:text="#{lang.pl}"></option>
 		</select> 
-		<div class="logout-link">
-				<a class="logout-link" th:href="@{/logout}" th:text="#{logout}"></a>
 		
+		<div id="logoutLink" class="logout-link">
+				<a href="#" onclick="document.getElementById('logoutForm').submit();" th:text="#{logout}" ></a>
 		</div>
+		
+		<form id="logoutForm" name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+      		<input hidden type="submit" value="Sign Out"/>
+   		</form> 
 	</div>	
+
 
 		<hr>
 		
@@ -53,7 +61,7 @@
 		<h3 th:text="${employee.firstName} + ' ' + ${employee.lastName}"></h3>
 		
 		<hr> 
-		
+
 		<div class="admins-buttons-panel" sec:authorize="hasRole('ROLE_ADMIN')">
 
 		<div class="buttons">
