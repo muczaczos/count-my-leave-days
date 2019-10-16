@@ -12,7 +12,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}"/>
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
 <title th:text="#{add.leave.day.form}"></title>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -33,64 +33,71 @@
 
 	<div class="container">
 
-	<div class="d-flex justify-content-between">  
-		<select class="language-select" id="locales">
-			<option value=""><p th:text="#{lang.change}"></p></option>
-			<option value="en" th:text="#{lang.eng}"></option>
-			<option value="pl" th:text="#{lang.pl}"></option>
-		</select> 
-		<div id="logoutLink" class="logout-link">
-				<a href="#" onclick="document.getElementById('logoutForm').submit();" th:text="#{logout}" ></a>
+		<div class="d-flex justify-content-between">
+			<select class="language-select" id="locales">
+				<option value=""><p th:text="#{lang.change}"></p>
+				</option>
+				<option value="en" th:text="#{lang.eng}"></option>
+				<option value="pl" th:text="#{lang.pl}"></option>
+			</select>
+			<div id="logoutLink" class="logout-link">
+				<a href="#"
+					onclick="document.getElementById('logoutForm').submit();"
+					th:text="#{logout}"></a>
+			</div>
+
+			<form id="logoutForm" name="logoutForm" th:action="@{/logout}"
+				method="post" th:hidden="true">
+				<input hidden type="submit" value="Sign Out" />
+			</form>
 		</div>
-		
-		<form id="logoutForm" name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
-      		<input hidden type="submit" value="Sign Out"/>
-   		</form> 
-	</div>	
-	
+
 		<hr>
 		<h1 th:text="#{add.leave.day.form}"></h1>
 		<hr>
-		<h3 th:text="*{employee.firstName}"></h3> 
+		<h3 th:text="*{employee.firstName}"></h3>
 		<h3 th:text="*{employee.lastName}"></h3>
 		<hr>
-	
-		
-		<form action="#" th:action="@{/leavedays/save}"
-						 th:object="${leavedays}" method="POST">
-						 
-						 
-			<!-- Add hiden form field to handle update -->
-			<input type="hidden" th:field="*{id}" />
-			
-			<label th:text="#{employee.id}"></label>
-			<input readonly="readonly" type="text" pattern="^([0-9]){0,3}" th:field="*{employee}"
-					class="form-control mb-4 col-4" th:placeholder="#{employee.id}"
-					th:title="#{only.numbers.1.999}">
-					
 
-			<label th:text="#{date.from}"></label>
-			<input required type="date" th:field="*{dateFrom}"
-					class="form-control mb-4 col-4" placeholder="Date From">
-			<label th:text="#{date.to}"></label>
-			<input required type="date" th:field="*{dateTo}"
-					class="form-control mb-4 col-4" placeholder="Date To">
-			<label th:text="#{leave.days}"></label>
-			<input required type="number" th:field="*{leaveDays}"
-					class="form-control mb-4 col-4" placeholder="Leave Days"
-					min="1" max="26" >
-			<label th:text="#{year}"></label>
-			<input required  type="number" th:field="*{year}"
-					class="form-control mb-4 col-4" placeholder="Year"
-					min="2000" max="3000">
-		
-		<button type="submit" class="btn btn-info col-2" th:text="#{save}"></button>
-					
+
+		<form action="#" th:action="@{/leavedays/save}"
+			th:object="${leavedays}" method="POST">
+
+			<div class="leaveday-form">
+				<div class="leaveday-form-column">
+					<!-- Add hiden form field to handle update -->
+					<input type="hidden" th:field="*{id}" /> 
+					<label
+						th:text="#{employee.id}">
+					</label> 
+					<input readonly="readonly"
+						type="text" pattern="^([0-9]){0,3}" th:field="*{employee}"
+						class="form-control mb-4" th:placeholder="#{employee.id}"
+						th:title="#{only.numbers.1.999}"> <label
+						th:text="#{date.from}"></label> <input required type="date"
+						th:field="*{dateFrom}" class="form-control mb-4"
+						placeholder="Date From"> <label th:text="#{date.to}"></label>
+					<input required type="date" th:field="*{dateTo}"
+						class="form-control mb-4" placeholder="Date To">
+				</div>
+				<div class="leaveday-form-column">
+					<label th:text="#{leave.days}"></label> <input required
+						type="number" th:field="*{leaveDays}"
+						class="form-control mb-4" placeholder="Leave Days" min="1"
+						max="26"> <label th:text="#{year}"></label> <input
+						required type="number" th:field="*{year}"
+						class="form-control mb-4" placeholder="Year" min="2019"
+						max="3000">
+
+					<button type="submit" class="btn btn-info" style="width: 100%; margin-top: 32px; " th:text="#{save}"></button>
+				</div>
+			</div>
+
 		</form>
-		
+
 		<hr>
 		<a th:href="@{/}" th:text="#{back.to.home}"></a>
-	
+
 	</div>
 
 </body>

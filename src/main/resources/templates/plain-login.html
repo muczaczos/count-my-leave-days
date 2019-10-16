@@ -42,13 +42,7 @@
 				<option value="pl" th:text="#{lang.pl}"></option>
 			</select>
 			
-		<div id="logoutLink" class="logout-link">
-				<a href="#" onclick="document.getElementById('logoutForm').submit();" th:text="#{logout}" ></a>
-		</div>
-		
-		<form id="logoutForm" name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
-      		<input hidden type="submit" value="Sign Out"/>
-   		</form> 
+	
    		
 		</div>
 

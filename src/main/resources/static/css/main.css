@@ -48,6 +48,16 @@ html {
 	grid-column-gap: 10px;
 }
 
+.leaveday-form {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 10px;
+}
+
+.leaveday-form-column{
+	width: 100%;
+}
+
 .login-form {
 	display: flex;
 	justify-content: center;
@@ -66,12 +76,13 @@ html {
 	.employee-form {
 		grid-template-columns: 1fr 1fr;
 	}
-	
+	.leaveday-form {
+		grid-template-columns: 1fr;
+	}
 	.login-container {
-	margin-top: 10px;
-	width: 90%;
-}
-
+		margin-top: 10px;
+		width: 90%;
+	}
 }
 
 @media ( max-width : 800px) {
