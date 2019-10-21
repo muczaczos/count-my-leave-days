@@ -218,8 +218,6 @@
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th th:text="#{firstname}"></th>
-					<th th:text="#{lastname}"></th>
 					<th th:text="#{date.from}"></th>
 					<th th:text="#{date.to}"></th>
 					<th th:text="#{leave.days}"></th>
@@ -231,8 +229,6 @@
 
 			<tbody>
 				<tr th:each="tempLeaveDay: ${leavedays}">
-					<td th:text="${tempLeaveDay.employee.firstName}" />
-					<td th:text="${tempLeaveDay.employee.lastName}" />
 					<td th:text="${tempLeaveDay.dateFrom}" />
 					<td th:text="${tempLeaveDay.dateTo}" />
 					<td th:text="${tempLeaveDay.leaveDays}" />
@@ -247,13 +243,13 @@
 						 --> <!-- Add Print button / link --> <a
 						th:href="@{/leavedays/print(leavedaysId=${tempLeaveDay.id})}"
 						class="btn btn-info btn-sm"
-						onclick="if (!(confirm('Are you sure you want to print proposal?'))) return false"
+						onclick="if (!(confirm('Czy jesteœ pewny, ¿e chcesz pobraæ ten wniosek?'))) return false"
 						th:text="#{download}"> </a> <!-- Add Print button / link --> 
 					
 						<!-- Add Delete button / link --> <a
 						th:href="@{/leavedays/delete(leavedaysId=${tempLeaveDay.id})}"
 						class="btn btn-danger btn-sm"
-						onclick="if (!(confirm('Are you sure you want to delete this leave day?'))) return false"
+						onclick="if (!(confirm('Czy jesteœ pewny, ¿e chcesz usun¹æ ten wniosek?'))) return false"
 						th:text="#{delete}"> </a>
 
 					</td>

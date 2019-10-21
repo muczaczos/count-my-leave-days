@@ -200,7 +200,7 @@ public class LeaveDaysController {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 		Document document = new Document();
-		PdfWriter.getInstance(document, new FileOutputStream("purposal.pdf"));
+		PdfWriter.getInstance(document, new FileOutputStream("/home/tomcat/downloads/purposal.pdf"));
 		document.open();
 
 		PdfPTable table = new PdfPTable(3);
@@ -279,7 +279,7 @@ public class LeaveDaysController {
 
 	@RequestMapping(path = "/download", method = RequestMethod.GET)
 	public ResponseEntity<Resource> download() throws IOException {
-		File file = new File("C:\\Users\\KP-Karton\\eclipse-workspace\\count-my-leave-days\\purposal.pdf");
+		File file = new File("/home/tomcat/downloads/purposal.pdf");
 
 		HttpHeaders header = new HttpHeaders();
 		header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=purposal.pdf");

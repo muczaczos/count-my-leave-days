@@ -2,14 +2,23 @@ package com.springboot.thymeleafdemo.controller;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import com.springboot.thymeleafdemo.entity.Employee;
 import com.springboot.thymeleafdemo.entity.LeaveDays;
@@ -20,7 +29,7 @@ import com.springboot.thymeleafdemo.service.UsersService;
 
 @Controller
 @RequestMapping("/")
-public class StartController {
+public class StartController extends WebMvcConfigurerAdapter {
 
 	private LeaveDaysService leaveDayService;
 	private EmployeeService employeeService;
@@ -32,7 +41,7 @@ public class StartController {
 		usersService = theUsersSerice;
 
 	}
-
+	
 	@GetMapping("/")
 	public String listLeaveDays(Model theModel) {
 
