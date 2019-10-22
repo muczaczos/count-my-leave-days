@@ -57,12 +57,16 @@
 		<hr>
 		
 		<h1 th:text="#{days.of.leave}"></h1>
+		
+		<div th:if="${employee != null}">
 
 		<h3 th:text="${employee.firstName} + ' ' + ${employee.lastName}"></h3>
 		
+		</div>
+		
 		<hr> 
 
-		<div class="admins-buttons-panel" sec:authorize="hasRole('ROLE_ADMIN')">
+		<div class="admins-buttons-panel" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')">
 
 		<div class="buttons">
 			<!-- Add a button -->
@@ -157,7 +161,7 @@
 		
 		</div>
 		
-		<div class="admins-buttons-panel" sec:authorize="hasRole('ROLE_ADMIN')">
+		<div class="admins-buttons-panel" sec:authorize="hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')">
 		<hr>
 		</div>
 		
@@ -243,13 +247,13 @@
 						 --> <!-- Add Print button / link --> <a
 						th:href="@{/leavedays/print(leavedaysId=${tempLeaveDay.id})}"
 						class="btn btn-info btn-sm"
-						onclick="if (!(confirm('Czy jesteœ pewny, ¿e chcesz pobraæ ten wniosek?'))) return false"
+						onclick="if (!(confirm('Czy jesteÅ› pewny, Å¼e chcesz pobraÄ‡ ten wniosek?'))) return false"
 						th:text="#{download}"> </a> <!-- Add Print button / link --> 
 					
 						<!-- Add Delete button / link --> <a
 						th:href="@{/leavedays/delete(leavedaysId=${tempLeaveDay.id})}"
 						class="btn btn-danger btn-sm"
-						onclick="if (!(confirm('Czy jesteœ pewny, ¿e chcesz usun¹æ ten wniosek?'))) return false"
+						onclick="if (!(confirm('Czy jesteÅ› pewny, Å¼e chcesz usunÄ…Ä‡ ten wniosek?'))) return false"
 						th:text="#{delete}"> </a>
 
 					</td>

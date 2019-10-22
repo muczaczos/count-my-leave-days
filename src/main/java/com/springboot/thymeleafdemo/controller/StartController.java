@@ -35,6 +35,7 @@ public class StartController extends WebMvcConfigurerAdapter {
 	private EmployeeService employeeService;
 	private UsersService usersService;
 
+
 	public StartController(LeaveDaysService theLeaveDayService, EmployeeService theEmployeeService, UsersService theUsersSerice) {
 		leaveDayService = theLeaveDayService;
 		employeeService = theEmployeeService;
@@ -96,7 +97,7 @@ public class StartController extends WebMvcConfigurerAdapter {
 						
 			System.err.println(username + " " + theEmployee.getId());
 		} catch (NullPointerException e) {
-
+			
 		}
 		return "start/index";
 	}
