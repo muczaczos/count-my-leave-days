@@ -42,13 +42,15 @@ You can explore the real sytem (like a admin or employee), but you don't have pe
 <br/>
 <br/>
 **Technologies which I used**
+<br/>
 Java (with Spring Security Framework)
+<br/>
 HTML, CSS, JS  (with Bootstrap Library)
 <br/>
 <br/>
 **Server**
-MySql and Tomcat
 <br/>
+MySql and Tomcat
 <br/>
 
 1. Clone That project
