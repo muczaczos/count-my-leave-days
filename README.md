@@ -25,12 +25,16 @@ If you want see that page, go to: [KP-Karton employees's web app](http://164.132
 You can login to that web app:
 <br/>
 **Admin**
+<br/>
 login: admin1234
+<br/>
 password: admin1234
 <br/>
 <br/>
 **User**
+<br/>
 login: user1234
+<br/>
 password: user1234
 <br/>
 <br/>
@@ -47,7 +51,6 @@ MySql and Tomcat
 <br/>
 <br/>
 **If you want run this project in developer enviroment do this:**
-<br/>
 1. Clone That project
 <br/>
 2. In Eclipse import Existing Maven Project
