@@ -5,7 +5,7 @@ Login page:
 ![Web app login screen](https://kp-karton.pl/assets/img/login.png)
 
 Admin panel:
-![Web app admin panel](https://kp-karton.pl/assets/img/admin.png)
+![Web app admin panel](https://kp-karton.pl/assets/img/login.png)
 
 Employee panel:
 ![Web app admin panel](https://kp-karton.pl/assets/img/employee.jpg)
