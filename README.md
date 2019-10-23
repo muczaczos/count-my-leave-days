@@ -54,6 +54,8 @@ HTML, CSS, JS  (with Bootstrap Library)
 MySql and Tomcat
 <br/>
 
+
+**If you want run this project in developer enviroment do this:**
 1. Clone That project
 <br/>
 2. In Eclipse import Existing Maven Project
