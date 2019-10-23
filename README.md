@@ -28,7 +28,7 @@ Admin:
 
 User:
 
-You can explore the real sytem (like a admin), but you don't have permission to perform the any action like: delete, save etc. 
+You can explore the real sytem (like a admin), but you don't have permission to perform any action like: delete, save etc. 
 
 If you want run this project in developer enviroment do this: 
 
