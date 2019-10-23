@@ -24,19 +24,49 @@ If you want see that page, go to: [KP-Karton employees's web app](http://164.132
 
 You can login to that web app:
 
-Admin:
+**Admin**
+login: admin1234
+password: admin1234
 
-User:
+**User**
+login: user1234
+password: user1234
 
-You can explore the real sytem (like a admin), but you don't have permission to perform any action like: delete, save etc. 
+You can explore the real sytem (like a admin or employee), but you don't have permission to perform all action. 
 
-If you want run this project in developer enviroment do this: 
+**Technologies which I used**
+Java (with Spring Security Framework)
+HTML, CSS, JS  (with Bootstrap Library)
+
+**Server**
+MySql and Tomcat
+
+**If you want run this project in developer enviroment do this:**
+1. Clone That project
+
+2. In Eclipse import Existing Maven Project
+
+3. Update Maven project
+
+4. Install MySQL and add user.
+
+5. Run sql script from main directory in MySQL (count-my-leave-days.sql)
+
+6. Add your user in application.properties file, in Java app resources directory. 
+
+7. Right click on main Java file and "Run as..." Java application
+
+8. Done :)
 
 
-1.`npm install -g gulp-cli`
 
-2.`npm install`
 
-3.`gulp`
 
-To publish your page using github pages use `npm run deploy`
+
+
+
+
+
+
+
+
