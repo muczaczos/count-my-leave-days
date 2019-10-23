@@ -1,10 +1,17 @@
 # count-my-leave-days
 
 
+Login page: 
+![Web app login screen](https://kp-karton.pl/assets/img/login.jpg)
 
-![KP-Karton website screen](https://kp-karton.pl/assets/img/screen.png)
+Admin panel:
+![Web app admin panel](https://kp-karton.pl/assets/img/admin.jpg)
 
+Employee panel:
+![Web app admin panel](https://kp-karton.pl/assets/img/employee.jpg)
 
+Leave day form: 
+![Web app admin panel](https://kp-karton.pl/assets/img/form.jpg)
 
 
 KP-Karton Company is the leader in the packaging industry in Poland. 
