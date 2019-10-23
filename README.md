@@ -1,16 +1,16 @@
 # count-my-leave-days
 
 
-Login page: 
+**Login page**: 
 ![Web app login screen](https://kp-karton.pl/assets/img/login.png)
 
-Admin panel:
+**Admin panel**:
 ![Web app admin panel](https://kp-karton.pl/assets/img/admin.png)
 
-Employee panel:
+**Employee panel**:
 ![Web app admin panel](https://kp-karton.pl/assets/img/employee.jpg)
 
-Leave day form: 
+**Leave day form**: 
 ![Web app admin panel](https://kp-karton.pl/assets/img/form.jpg)
 
 
