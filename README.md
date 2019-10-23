@@ -62,7 +62,7 @@ MySql and Tomcat
 <br/>
 3. Update Maven project
 <br/>
-4. Install MySQL and add user.
+4. Install MySQL and add user with all priviligies.
 <br/>
 5. Run sql script from main directory in MySQL (count-my-leave-days.sql)
 <br/>
