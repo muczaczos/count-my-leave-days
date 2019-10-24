@@ -45,6 +45,12 @@ public class Employee {
 	@Column(name="date_of_expire", nullable = true)
 	private Date dateOfExpire;
 	
+	@Column(name="medical_examination", nullable = true)
+	private Date medicalExamination;
+	
+	@Column(name="osh_training", nullable = true)
+	private Date oshTraining;
+	
 	@Column(name="leave_days_limit")
 	private int leaveDaysLimit;
 	
@@ -63,26 +69,10 @@ public class Employee {
 		
 	}
 	
-	public Employee(String login, String password, String firstName, String lastName, int tel,
-			Date dateOfEmployment, Date dateOfExpire, int leaveDaysLimit, int yourLeaveDays, int currentYear,
-			String role) {
-		this.login = login;
-		this.password = password;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.tel = tel;
-		this.dateOfEmployment = dateOfEmployment;
-		this.dateOfExpire = dateOfExpire;
-		this.leaveDaysLimit = leaveDaysLimit;
-		this.yourLeaveDays = yourLeaveDays;
-		this.currentYear = currentYear;
-		this.role = role;
-	}
-
-
+	
 	public Employee(int id, String login, String password, String firstName, String lastName, int tel,
-			Date dateOfEmployment, Date dateOfExpire, int leaveDaysLimit, int yourLeaveDays, int currentYear,
-			String role) {
+			Date dateOfEmployment, Date dateOfExpire, Date medicalExamination, Date oshTraining, int leaveDaysLimit,
+			int yourLeaveDays, int currentYear, String role) {
 		this.id = id;
 		this.login = login;
 		this.password = password;
@@ -91,6 +81,26 @@ public class Employee {
 		this.tel = tel;
 		this.dateOfEmployment = dateOfEmployment;
 		this.dateOfExpire = dateOfExpire;
+		this.medicalExamination = medicalExamination;
+		this.oshTraining = oshTraining;
+		this.leaveDaysLimit = leaveDaysLimit;
+		this.yourLeaveDays = yourLeaveDays;
+		this.currentYear = currentYear;
+		this.role = role;
+	}
+	
+	public Employee(String login, String password, String firstName, String lastName, int tel,
+			Date dateOfEmployment, Date dateOfExpire, Date medicalExamination, Date oshTraining, int leaveDaysLimit,
+			int yourLeaveDays, int currentYear, String role) {
+		this.login = login;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.tel = tel;
+		this.dateOfEmployment = dateOfEmployment;
+		this.dateOfExpire = dateOfExpire;
+		this.medicalExamination = medicalExamination;
+		this.oshTraining = oshTraining;
 		this.leaveDaysLimit = leaveDaysLimit;
 		this.yourLeaveDays = yourLeaveDays;
 		this.currentYear = currentYear;
@@ -98,12 +108,31 @@ public class Employee {
 	}
 
 
-
 	// define getter / setter
 	
 	public int getId() {
 		return id;
 	}
+
+	public Date getMedicalExamination() {
+		return medicalExamination;
+	}
+
+
+	public void setMedicalExamination(Date medicalExamination) {
+		this.medicalExamination = medicalExamination;
+	}
+
+
+	public Date getOshTraining() {
+		return oshTraining;
+	}
+
+
+	public void setOshTraining(Date oshTraining) {
+		this.oshTraining = oshTraining;
+	}
+
 
 	public int getCurrentYear() {
 		return currentYear;

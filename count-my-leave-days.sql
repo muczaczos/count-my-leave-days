@@ -25,6 +25,8 @@ CREATE TABLE `employee` (
   `tel` int(9) DEFAULT NULL,
   `date_of_employment` date DEFAULT NULL,
   `date_of_expire` date DEFAULT NULL,
+  `medical_examination` date DEFAULT NULL,
+  `osh_training` date DEFAULT NULL,
   `leave_days_limit` int(2) DEFAULT NULL,
   `your_leave_days` int(2) DEFAULT NULL,
   `current_year` int DEFAULT NULL,

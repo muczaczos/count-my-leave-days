@@ -114,6 +114,12 @@
 			<label th:text="#{date.of.expire}"></label>
 			<input required type="date" th:field="*{dateOfExpire}"
 					class="form-control" placeholder="Date of Expire" >
+			<label th:text="#{medical.examination}"></label>
+			<input required type="date" th:field="*{medicalExamination}"
+					class="form-control" placeholder="Medical examination" >
+			<label th:text="#{osh.training}"></label>
+			<input required type="date" th:field="*{oshTraining}"
+					class="form-control" placeholder="Osh training" >
 			<label th:text="#{role}"></label>
 			<br>
 			<select style="width: 100%; height: 38px; border-radius: 4px; border-color: #d3d3d3;"th:field="*{role}">

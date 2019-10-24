@@ -67,6 +67,8 @@
 					<th th:text="#{phonenumber}"></th>
 					<th th:text="#{leave.days.limit}"></th>
 					<th th:text="#{yours.leave.days}"></th>
+					<th th:text="#{osh.training}"></th>
+					<th th:text="#{medical.examination}"></th>
 					<th th:text="#{action}"></th>
 				</tr>
 			</thead>
@@ -79,7 +81,8 @@
 					<td th:text="${tempEmployee.tel}" />
 					<td th:text="${tempEmployee.leaveDaysLimit}" />
 					<td th:text="${tempEmployee.yourLeaveDays}" />
-					
+					<td th:text="${tempEmployee.oshTraining}" />
+					<td th:text="${tempEmployee.medicalExamination}" />
 					
 					<td>
 					
