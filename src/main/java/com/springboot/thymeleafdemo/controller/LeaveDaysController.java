@@ -30,14 +30,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
-import com.itextpdf.text.pdf.BaseFont;
+
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -50,8 +49,8 @@ import com.springboot.thymeleafdemo.service.LeaveDaysService;
 @RequestMapping("/leavedays")
 public class LeaveDaysController {
 	
-	public static final String FONT = "bebas.ttf";
-	public static final String FONT2 = "dosis.otf";
+	public static final String FONT = "/home/tomcat/downloads/bebas.ttf";
+	public static final String FONT2 = "/home/tomcat/downloads/dosis.otf";
 	
 
 	@InitBinder
