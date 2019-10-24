@@ -1,7 +1,6 @@
 package com.springboot.thymeleafdemo.controller;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,10 +30,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -46,6 +49,10 @@ import com.springboot.thymeleafdemo.service.LeaveDaysService;
 @Controller
 @RequestMapping("/leavedays")
 public class LeaveDaysController {
+	
+	public static final String FONT = "bebas.ttf";
+	public static final String FONT2 = "dosis.otf";
+	
 
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
@@ -200,10 +207,19 @@ public class LeaveDaysController {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 		Document document = new Document();
+		//For server 
 		PdfWriter.getInstance(document, new FileOutputStream("/home/tomcat/downloads/purposal.pdf"));
+		
+		//For local env.
+		//PdfWriter.getInstance(document, new FileOutputStream("purposal.pdf"));
 		document.open();
-
+		
+		Font font = FontFactory.getFont(FONT2, "Cp1250", true);
+	
+		
+		
 		PdfPTable table = new PdfPTable(3);
+		
 		table.setWidthPercentage(100);
 		table.addCell(getCell(
 				employeeService.findById(leaveDays.getEmployee().getId()).getFirstName() + " "
@@ -233,12 +249,12 @@ public class LeaveDaysController {
 		document.add(table2);
 
 		Paragraph p2 = new Paragraph(
-				"Urlopu wypoczynkowego / bezpłatngo / okolicznościowego / opieki nad dzieckiem/ * w okresie od: ");
+				"Urlopu wypoczynkowego / bezpłatngo / okolicznościowego / opieki nad dzieckiem/ * w okresie od: ",font);
 		document.add(p2);
 		Paragraph p3 = new Paragraph("dnia: " + leaveDaysService.findById(theId).getDateFrom() + " do dnia: "
 				+ leaveDaysService.findById(theId).getDateTo() + " wlacznie tj. "
 				+ leaveDaysService.findById(theId).getLeaveDays() + " dni roboczych, za rok "
-				+ leaveDaysService.findById(theId).getYear());
+				+ leaveDaysService.findById(theId).getYear(),font);
 		document.add(p3);
 
 		document.add(new Phrase("\n"));
@@ -265,7 +281,7 @@ public class LeaveDaysController {
 		table7.setWidthPercentage(100);
 		table7.addCell(getCell("", PdfPCell.ALIGN_LEFT));
 		table7.addCell(getCell("", PdfPCell.ALIGN_CENTER));
-		table7.addCell(getCell("* niepotrzebne skreslic", PdfPCell.ALIGN_RIGHT));
+		table7.addCell(getCell("* niepotrzebne skreślić", PdfPCell.ALIGN_RIGHT));
 		document.add(table7);
 
 		// Start a new page
@@ -279,7 +295,12 @@ public class LeaveDaysController {
 
 	@RequestMapping(path = "/download", method = RequestMethod.GET)
 	public ResponseEntity<Resource> download() throws IOException {
+		
+		//For Server
 		File file = new File("/home/tomcat/downloads/purposal.pdf");
+		
+		//For local env.
+		//File file = new File("purposal.pdf");
 
 		HttpHeaders header = new HttpHeaders();
 		header.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=purposal.pdf");
@@ -295,10 +316,13 @@ public class LeaveDaysController {
 	}
 
 	private static PdfPCell getCell(String text, int alignment) {
-		PdfPCell cell = new PdfPCell(new Phrase(text));
+		
+		Font font = FontFactory.getFont(FONT, "Cp1250", true);
+		PdfPCell cell = new PdfPCell(new Phrase(text,font));
 		cell.setPadding(0);
 		cell.setHorizontalAlignment(alignment);
 		cell.setBorder(PdfPCell.NO_BORDER);
+		
 		return cell;
 	}
 
