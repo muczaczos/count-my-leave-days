@@ -250,11 +250,6 @@
 						onclick="if (!(confirm('Czy jesteś pewny, że chcesz pobrać ten wniosek?'))) return false"
 						th:text="#{download}"> </a> <!-- Add Print button / link --> 
 					
-						<!-- Add Delete button / link --> <a
-						th:href="@{/leavedays/delete(leavedaysId=${tempLeaveDay.id})}"
-						class="btn btn-danger btn-sm"
-						onclick="if (!(confirm('Czy jesteś pewny, że chcesz usunąć ten wniosek?'))) return false"
-						th:text="#{delete}"> </a>
 
 					</td>
 
