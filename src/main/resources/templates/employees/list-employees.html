@@ -67,6 +67,7 @@
 					<th th:text="#{phonenumber}"></th>
 					<th th:text="#{leave.days.limit}"></th>
 					<th th:text="#{yours.leave.days}"></th>
+					<th th:text="#{date.of.expire}"></th>
 					<th th:text="#{osh.training}"></th>
 					<th th:text="#{medical.examination}"></th>
 					<th th:text="#{action}"></th>
@@ -81,6 +82,8 @@
 					<td th:text="${tempEmployee.tel}" />
 					<td th:text="${tempEmployee.leaveDaysLimit}" />
 					<td th:text="${tempEmployee.yourLeaveDays}" />
+					<td bgcolor="red" th:if="${tempEmployee.dateOfExpire.before(#dates.createNow())}" th:text="${tempEmployee.dateOfExpire}" />
+					<td th:if="${tempEmployee.dateOfExpire.after(#dates.createNow())}" th:text="${tempEmployee.dateOfExpire}" />
 					<td bgcolor="red" th:if="${tempEmployee.oshTraining.before(#dates.createNow())}" th:text="${tempEmployee.oshTraining}" />
 					<td th:if="${tempEmployee.oshTraining.after(#dates.createNow())}" th:text="${tempEmployee.oshTraining}" />
 					<td bgcolor="red" th:if="${tempEmployee.medicalExamination.before(#dates.createNow())}" th:text="${tempEmployee.oshTraining}" />
