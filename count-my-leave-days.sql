@@ -73,7 +73,7 @@ CREATE TABLE `authorities` (
 -- Data for table `employee` & `leave_days`
 --
 INSERT INTO `employee` VALUES 
-	(1, 'jan@tlen.pl', 'password','Jan','Nowak','123456789','2019-01-20', null, 26, 20, '2019','ROLE_EMPLOYEE');
+	(1, 'jan@tlen.pl', 'password','Jan','Nowak','123456789','2019-01-20','2019-01-20','2019-01-20', '2019-01-20', 26, 20, '2019','ROLE_ADMIN');
 
 INSERT INTO `leave_days` VALUES 
 	(1, 1, '2019-01-25', '2019-01-25', 1, 2019);
