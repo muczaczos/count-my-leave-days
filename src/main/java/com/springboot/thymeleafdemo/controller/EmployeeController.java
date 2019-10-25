@@ -21,6 +21,7 @@ import com.springboot.thymeleafdemo.entity.Employee;
 import com.springboot.thymeleafdemo.entity.Users;
 import com.springboot.thymeleafdemo.service.AuthoritiesService;
 import com.springboot.thymeleafdemo.service.EmployeeService;
+import com.springboot.thymeleafdemo.service.LeaveDaysService;
 import com.springboot.thymeleafdemo.service.UsersService;
 
 @Controller
@@ -40,12 +41,14 @@ public class EmployeeController {
 	private EmployeeService employeeService;
 	private UsersService usersService;
 	private AuthoritiesService authoritiesService;
+	private LeaveDaysService leaveDayService;
 
 	public EmployeeController(EmployeeService theEmployeeService, UsersService theUsersService,
-			AuthoritiesService theAuthoritiesService) {
+			AuthoritiesService theAuthoritiesService, LeaveDaysService theLeaveDayService) {
 		employeeService = theEmployeeService;
 		usersService = theUsersService;
 		authoritiesService = theAuthoritiesService;
+		leaveDayService = theLeaveDayService;
 	}
 
 	// add mapping for "/list"
@@ -135,8 +138,12 @@ public class EmployeeController {
 	@GetMapping("/delete")
 	public String delete(@RequestParam("employeeId") int theId) {
 
+		Employee employee = employeeService.findById(theId);
 		// delete the employee
 		employeeService.deleteById(theId);
+		
+		// delete leaveDays
+		leaveDayService.deleteLeaveDayByEmployee(employee);
 
 		// use a redirect to /employees/list
 		return "redirect:/employees/list";

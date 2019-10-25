@@ -17,6 +17,8 @@ public interface LeaveDaysService {
 	public void deleteById(int theId);
 	
     public List<LeaveDays> findAllByEmployee(Employee employee);
+    
+    public void deleteLeaveDayByEmployee(Employee employee);
 
 	
 }

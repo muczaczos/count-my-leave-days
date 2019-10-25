@@ -64,5 +64,12 @@ public class LeaveDaysServiceImpl implements LeaveDaysService {
 		return leaveDaysRepository.findAllByEmployee(employee);
 	}
 
+	@Override
+	public void deleteLeaveDayByEmployee(Employee employee) {
+
+		leaveDaysRepository.deleteLeaveDayByEmployee(employee);
+		
+	}
+
 
 }
