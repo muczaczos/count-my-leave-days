@@ -86,8 +86,8 @@
 					<td th:if="${tempEmployee.dateOfExpire.after(#dates.createNow())}" th:text="${tempEmployee.dateOfExpire}" />
 					<td bgcolor="red" th:if="${tempEmployee.oshTraining.before(#dates.createNow())}" th:text="${tempEmployee.oshTraining}" />
 					<td th:if="${tempEmployee.oshTraining.after(#dates.createNow())}" th:text="${tempEmployee.oshTraining}" />
-					<td bgcolor="red" th:if="${tempEmployee.medicalExamination.before(#dates.createNow())}" th:text="${tempEmployee.oshTraining}" />
-					<td th:if="${tempEmployee.medicalExamination.after(#dates.createNow())}" th:text="${tempEmployee.oshTraining}" />
+					<td bgcolor="red" th:if="${tempEmployee.medicalExamination.before(#dates.createNow())}" th:text="${tempEmployee.medicalExamination}" />
+					<td th:if="${tempEmployee.medicalExamination.after(#dates.createNow())}" th:text="${tempEmployee.medicalExamination}" />
 					
 					<td>
 					
