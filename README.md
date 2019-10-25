@@ -18,7 +18,7 @@ KP-Karton Company is the leader in the packaging industry in Poland.
 <br/>
 Web app of the employees Kp-Karton company, for leave days monitoring. 
 <br/>
-That program, counting leave days your employees. Each employee, can also print proposal of the leave day for boss. 
+That program, will count leave days your employees and check if OSH training or Medical examination is was not expire. If is expire,  background's field (in employees's table) will be changed to red. Each employee, can also print proposal of the leave day for boss. 
 <br/>
 If you want see that page, go to: [KP-Karton employees's web app](http://164.132.107.168:8080/urlopy/showMyLoginPage)
 <br/>
@@ -48,6 +48,8 @@ Java (with Spring Security Framework)
 <br/>
 HTML, CSS, JS  (with Bootstrap Library)
 <br/>
+Thymeleaf
+<br>
 <br/>
 **Server**
 <br/>
