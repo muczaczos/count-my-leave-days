@@ -81,8 +81,16 @@
 					<td th:text="${tempEmployee.tel}" />
 					<td th:text="${tempEmployee.leaveDaysLimit}" />
 					<td th:text="${tempEmployee.yourLeaveDays}" />
-					<td th:text="${tempEmployee.oshTraining}" />
-					<td th:text="${tempEmployee.medicalExamination}" />
+				
+					<div th:switch="${tempEmployee.oshTraining.before(#calendars.createNow())}">
+    					<td bgcolor="red" th:case="true" th:text="${tempEmployee.oshTraining}" />
+    					<td th:case="false" th:text="${tempEmployee.oshTraining}" />
+					</div>
+					
+					<div th:switch="${tempEmployee.medicalExamination.before(#calendars.createNow())}">
+    					<td bgcolor="red" th:case="true" th:text="${tempEmployee.medicalExamination}" />
+    					<td th:case="false" th:text="${tempEmployee.medicalExamination}" />
+					</div>
 					
 					<td>
 					

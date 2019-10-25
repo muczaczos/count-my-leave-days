@@ -55,9 +55,13 @@ public class EmployeeController {
 
 		// get employees from db
 		List<Employee> theEmployees = employeeService.findAll();
-
+		java.util.Date date = new java.util.Date();
+		
 		// add to the spring model
 		theModel.addAttribute("employees", theEmployees);
+		
+		// add to the spring model
+		theModel.addAttribute("today", date);
 
 		return "employees/list-employees";
 	}
