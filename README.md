@@ -20,27 +20,7 @@ Web app of the employees Kp-Karton company, for leave days monitoring.
 <br/>
 That program, will count leave days your employees and check if OSH training or Medical examination is was not expire. If is expire,  background's field (in employees's table) will be changed to red. Each employee, can also print proposal of the leave day for boss. 
 <br/>
-If you want see that page, go to: [KP-Karton employees's web app](http://164.132.107.168:8080/urlopy/showMyLoginPage)
-<br/>
-<br/>
-You can login to that web app:
-<br/>
-**Admin**
-<br/>
-login: admin1234
-<br/>
-password: admin1234
-<br/>
-<br/>
-**User**
-<br/>
-login: user1234
-<br/>
-password: user1234
-<br/>
-<br/>
-You can explore the real sytem (like a admin or employee), but you don't have permission to perform all action. 
-<br/>
+
 <br/>
 **Technologies which I used**
 <br/>
